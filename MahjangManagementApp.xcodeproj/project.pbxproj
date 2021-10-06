@@ -3,19 +3,37 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		685A66D95ABA841627E20D9F /* Pods_MahjangManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1AC1AED0B608419DDAF76E /* Pods_MahjangManagementApp.framework */; };
 		829CDCE5270211D500FB4931 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDCE4270211D500FB4931 /* AppDelegate.swift */; };
 		829CDCE7270211D500FB4931 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDCE6270211D500FB4931 /* SceneDelegate.swift */; };
 		829CDCE9270211D500FB4931 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDCE8270211D500FB4931 /* ViewController.swift */; };
 		829CDCEC270211D500FB4931 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCEA270211D500FB4931 /* Main.storyboard */; };
 		829CDCEE270211D600FB4931 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCED270211D600FB4931 /* Assets.xcassets */; };
 		829CDCF1270211D600FB4931 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCEF270211D600FB4931 /* LaunchScreen.storyboard */; };
+		829CDCF927021D2500FB4931 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDCF827021D2500FB4931 /* UIColor-Extension.swift */; };
+		829CDCFB2703F56000FB4931 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCFA2703F56000FB4931 /* GoogleService-Info.plist */; };
+		829CDCFF27040B9C00FB4931 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCFE27040B9C00FB4931 /* Home.storyboard */; };
+		829CDD012704120C00FB4931 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD002704120C00FB4931 /* HomeViewController.swift */; };
+		829CDD0327041DCA00FB4931 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDD0227041DCA00FB4931 /* Login.storyboard */; };
+		829CDD0527041EA000FB4931 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD0427041EA000FB4931 /* LoginViewController.swift */; };
+		829CDD0A2704347F00FB4931 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDD092704347F00FB4931 /* SignUp.storyboard */; };
+		829CDD0D2704357200FB4931 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD0C2704357200FB4931 /* User.swift */; };
+		829CDD1127043AF700FB4931 /* History.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDD1027043AF700FB4931 /* History.storyboard */; };
+		829CDD1527043B3200FB4931 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD1427043B3200FB4931 /* HistoryViewController.swift */; };
+		829CDD172706A54000FB4931 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD162706A54000FB4931 /* Result.swift */; };
+		829CDD192706E26500FB4931 /* AddRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDD182706E26500FB4931 /* AddRule.storyboard */; };
+		829CDD1B2706E27A00FB4931 /* AddRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD1A2706E27A00FB4931 /* AddRuleViewController.swift */; };
+		829CDD1F270AE2AD00FB4931 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD1E270AE2AD00FB4931 /* Rule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B1AC1AED0B608419DDAF76E /* Pods_MahjangManagementApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MahjangManagementApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1501886E4226900586AA1578 /* Pods-MahjangManagementApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjangManagementApp.debug.xcconfig"; path = "Target Support Files/Pods-MahjangManagementApp/Pods-MahjangManagementApp.debug.xcconfig"; sourceTree = "<group>"; };
+		7EBAEBAF291E8C3DB05671E9 /* Pods-MahjangManagementApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjangManagementApp.release.xcconfig"; path = "Target Support Files/Pods-MahjangManagementApp/Pods-MahjangManagementApp.release.xcconfig"; sourceTree = "<group>"; };
 		829CDCE1270211D500FB4931 /* MahjangManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MahjangManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		829CDCE4270211D500FB4931 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		829CDCE6270211D500FB4931 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +42,20 @@
 		829CDCED270211D600FB4931 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		829CDCF0270211D600FB4931 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		829CDCF2270211D600FB4931 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		829CDCF827021D2500FB4931 /* UIColor-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor-Extension.swift"; sourceTree = "<group>"; };
+		829CDCFA2703F56000FB4931 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		829CDCFE27040B9C00FB4931 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		829CDD002704120C00FB4931 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		829CDD0227041DCA00FB4931 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		829CDD0427041EA000FB4931 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		829CDD092704347F00FB4931 /* SignUp.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		829CDD0C2704357200FB4931 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		829CDD1027043AF700FB4931 /* History.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = History.storyboard; sourceTree = "<group>"; };
+		829CDD1427043B3200FB4931 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		829CDD162706A54000FB4931 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		829CDD182706E26500FB4931 /* AddRule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRule.storyboard; sourceTree = "<group>"; };
+		829CDD1A2706E27A00FB4931 /* AddRuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRuleViewController.swift; sourceTree = "<group>"; };
+		829CDD1E270AE2AD00FB4931 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +63,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				685A66D95ABA841627E20D9F /* Pods_MahjangManagementApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47C7B04E625B48C0BFE84A1D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1501886E4226900586AA1578 /* Pods-MahjangManagementApp.debug.xcconfig */,
+				7EBAEBAF291E8C3DB05671E9 /* Pods-MahjangManagementApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		829CDCD8270211D500FB4931 = {
 			isa = PBXGroup;
 			children = (
 				829CDCE3270211D500FB4931 /* MahjangManagementApp */,
 				829CDCE2270211D500FB4931 /* Products */,
+				47C7B04E625B48C0BFE84A1D /* Pods */,
+				8FD625A9B5F434645339BABD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +100,69 @@
 		829CDCE3270211D500FB4931 /* MahjangManagementApp */ = {
 			isa = PBXGroup;
 			children = (
+				829CDD0B2704356800FB4931 /* Models */,
+				829CDD082704343700FB4931 /* Helpers */,
+				829CDD072704341200FB4931 /* Storyboards */,
+				829CDD06270433F700FB4931 /* Controllers */,
 				829CDCE4270211D500FB4931 /* AppDelegate.swift */,
 				829CDCE6270211D500FB4931 /* SceneDelegate.swift */,
-				829CDCE8270211D500FB4931 /* ViewController.swift */,
 				829CDCEA270211D500FB4931 /* Main.storyboard */,
 				829CDCED270211D600FB4931 /* Assets.xcassets */,
 				829CDCEF270211D600FB4931 /* LaunchScreen.storyboard */,
 				829CDCF2270211D600FB4931 /* Info.plist */,
+				829CDCFA2703F56000FB4931 /* GoogleService-Info.plist */,
 			);
 			path = MahjangManagementApp;
+			sourceTree = "<group>";
+		};
+		829CDD06270433F700FB4931 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				829CDCE8270211D500FB4931 /* ViewController.swift */,
+				829CDD002704120C00FB4931 /* HomeViewController.swift */,
+				829CDD0427041EA000FB4931 /* LoginViewController.swift */,
+				829CDD1427043B3200FB4931 /* HistoryViewController.swift */,
+				829CDD1A2706E27A00FB4931 /* AddRuleViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		829CDD072704341200FB4931 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				829CDD092704347F00FB4931 /* SignUp.storyboard */,
+				829CDCFE27040B9C00FB4931 /* Home.storyboard */,
+				829CDD0227041DCA00FB4931 /* Login.storyboard */,
+				829CDD1027043AF700FB4931 /* History.storyboard */,
+				829CDD182706E26500FB4931 /* AddRule.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		829CDD082704343700FB4931 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				829CDCF827021D2500FB4931 /* UIColor-Extension.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		829CDD0B2704356800FB4931 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				829CDD0C2704357200FB4931 /* User.swift */,
+				829CDD162706A54000FB4931 /* Result.swift */,
+				829CDD1E270AE2AD00FB4931 /* Rule.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8FD625A9B5F434645339BABD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0B1AC1AED0B608419DDAF76E /* Pods_MahjangManagementApp.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 829CDCF5270211D600FB4931 /* Build configuration list for PBXNativeTarget "MahjangManagementApp" */;
 			buildPhases = (
+				3E972B83A4A6F16CA7F9F3DA /* [CP] Check Pods Manifest.lock */,
 				829CDCDD270211D500FB4931 /* Sources */,
 				829CDCDE270211D500FB4931 /* Frameworks */,
 				829CDCDF270211D500FB4931 /* Resources */,
+				FE69A3961BDAC8518EC594A3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,22 +224,78 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				829CDCFB2703F56000FB4931 /* GoogleService-Info.plist in Resources */,
+				829CDCFF27040B9C00FB4931 /* Home.storyboard in Resources */,
+				829CDD0327041DCA00FB4931 /* Login.storyboard in Resources */,
+				829CDD0A2704347F00FB4931 /* SignUp.storyboard in Resources */,
 				829CDCF1270211D600FB4931 /* LaunchScreen.storyboard in Resources */,
 				829CDCEE270211D600FB4931 /* Assets.xcassets in Resources */,
+				829CDD192706E26500FB4931 /* AddRule.storyboard in Resources */,
 				829CDCEC270211D500FB4931 /* Main.storyboard in Resources */,
+				829CDD1127043AF700FB4931 /* History.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3E972B83A4A6F16CA7F9F3DA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MahjangManagementApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FE69A3961BDAC8518EC594A3 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MahjangManagementApp/Pods-MahjangManagementApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MahjangManagementApp/Pods-MahjangManagementApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MahjangManagementApp/Pods-MahjangManagementApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		829CDCDD270211D500FB4931 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				829CDD172706A54000FB4931 /* Result.swift in Sources */,
+				829CDD0527041EA000FB4931 /* LoginViewController.swift in Sources */,
+				829CDD012704120C00FB4931 /* HomeViewController.swift in Sources */,
+				829CDD1F270AE2AD00FB4931 /* Rule.swift in Sources */,
 				829CDCE9270211D500FB4931 /* ViewController.swift in Sources */,
+				829CDCF927021D2500FB4931 /* UIColor-Extension.swift in Sources */,
 				829CDCE5270211D500FB4931 /* AppDelegate.swift in Sources */,
+				829CDD1B2706E27A00FB4931 /* AddRuleViewController.swift in Sources */,
+				829CDD1527043B3200FB4931 /* HistoryViewController.swift in Sources */,
 				829CDCE7270211D500FB4931 /* SceneDelegate.swift in Sources */,
+				829CDD0D2704357200FB4931 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,6 +439,7 @@
 		};
 		829CDCF6270211D600FB4931 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1501886E4226900586AA1578 /* Pods-MahjangManagementApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -296,12 +453,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sorapiyobeans.MahjangManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		829CDCF7270211D600FB4931 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7EBAEBAF291E8C3DB05671E9 /* Pods-MahjangManagementApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -315,7 +473,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sorapiyobeans.MahjangManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
