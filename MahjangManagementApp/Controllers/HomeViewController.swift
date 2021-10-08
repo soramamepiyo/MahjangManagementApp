@@ -26,6 +26,8 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
+        ruleID = ruleIDData[row]
         ruleTextField.text = ruleData[row]
     }
     
@@ -46,15 +48,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     //追加ボタンを押した時の処理
     @IBAction func tappedAddResultButton(_ sender: Any) {
-        
-        guard let ruleText = ruleTextField.text else { return }
-        
-        if ruleText == "対局ルールを選択してください" {
-            print("選択エラー：タイトルを選択しないでください。")
-        } else {
-            addResultToFirestore()
-            clearTextField()
-        }
+        addResultToFirestore()
     }
     
     //フッターボタンの設定
@@ -69,12 +63,15 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     //グローバル変数
     var mode = String()
     var ranking = Int()
+    var ruleID = String()
     
     var pickerView = UIPickerView()
     
     //標準ルールの設定
 //    var ruleData = ["対局ルールを選択してください", "5-10", "10-20", "10-30", "Mリーグルール"]
     var ruleData = [String]()
+    var ruleIDData = [String]()
+    
     
     //ログアウトボタンを押した場合の処理
     @IBAction func tappedLogoutButton(_ sender: Any) {
@@ -163,10 +160,12 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 let rule = Rule.init(dic: dic)
                 
                 let ruleName: String = rule.ruleName
+                let ruleID: String = snapShot.documentID
+                
+//                print("rulename: \(ruleName)  ruleID:\(ruleID)")
                 
                 self.ruleData.append(ruleName)
-//                print("Append! -> ", ruleName)
-                
+                self.ruleIDData.append(ruleID)                
             })
         }
     }
@@ -240,7 +239,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let date = Timestamp()
         
-        let docData = ["date": date, "mode": mode, "rule": rule, "ranking": ranking, "score": score] as [String : Any]
+        let docData = ["date": date, "mode": mode, "rule": rule, "ruleID": ruleID, "ranking": ranking, "score": score] as [String : Any]
         
         let resultRef = Firestore.firestore().collection("mahjang").document("results").collection(uid)
         

@@ -124,6 +124,7 @@ class ViewController: UIViewController {
         }
     }
     
+    //初期対局ルールを追加するための関数
     private func addDefaultRuleToFirestore() {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
