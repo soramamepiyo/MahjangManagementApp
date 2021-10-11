@@ -52,6 +52,9 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     //フッターボタンの設定
+    
+    @IBOutlet weak var tappedToHomeButton: UIButton!
+    
     @IBAction func tappedHistoryButton(_ sender: Any) {
         presentToHistoryViewController()
     }
@@ -96,6 +99,10 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tappedToHomeButton.isEnabled = false
+        tappedToHomeButton.setTitleColor(.gray, for: .normal)
+        tappedToHomeButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         addResultButton.isEnabled = false
         addResultButton.backgroundColor = UIColor.rgb(red: 255, green: 221, blue: 187)
@@ -236,9 +243,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     //Firestoreにデータを追加
     private func addResultToFirestore() {
-        
-        // print("tapped!")
-        
+                
         guard let rule = self.ruleTextField.text else { return }
         guard let score: Int = Int(self.scoreTextField.text!) else { return }
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -262,6 +267,10 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             
             HUD.flash(.success, onView: self.view, delay: 1) { (_) in
                 print("Firestoreへの保存に成功しました。")
+                
+                self.scoreTextField.text = ""
+                self.rankingSegmentedControl.selectedSegmentIndex = 0
+                
             }
         }
     }

@@ -35,23 +35,26 @@
                                         <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="60"/>
                                         <state key="normal" title="ADD"/>
                                         <connections>
-                                            <action selector="tappedAddResultButton:" destination="NE5-da-UhG" eventType="touchUpInside" id="A9Y-FZ-aBt"/>
+                                            <action selector="tappedToHomeViewController:" destination="NE5-da-UhG" eventType="touchUpInside" id="Sfu-62-XXT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h3z-Ag-l4G">
                                         <rect key="frame" x="97.666666666666686" y="0.0" width="97.333333333333314" height="60"/>
                                         <state key="normal" title="HISTORY"/>
                                         <connections>
-                                            <action selector="tappedHistoryButton:" destination="NE5-da-UhG" eventType="touchUpInside" id="1pH-L0-jeg"/>
+                                            <action selector="tappedToHistoryViewController:" destination="NE5-da-UhG" eventType="touchUpInside" id="4NC-Vl-ekf"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sfy-pN-yjQ">
                                         <rect key="frame" x="195" y="0.0" width="97.666666666666686" height="60"/>
                                         <state key="normal" title="ADD RULE"/>
+                                        <connections>
+                                            <action selector="tappedToAddRulebutton:" destination="NE5-da-UhG" eventType="touchUpInside" id="nBa-F8-UwN"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MPA-c2-x7V">
                                         <rect key="frame" x="292.66666666666669" y="0.0" width="97.333333333333314" height="60"/>
-                                        <state key="normal" title="ANALYTICS"/>
+                                        <state key="normal" title="ANALYSE"/>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -273,6 +276,7 @@
                         <outlet property="pointOf4Label" destination="7yC-7c-cDJ" id="d6Z-DP-Cnv"/>
                         <outlet property="secondOf3Label" destination="vdS-FU-n7D" id="hwQ-sH-moW"/>
                         <outlet property="secondOf4Label" destination="oEb-yq-HRz" id="MI4-Oj-87v"/>
+                        <outlet property="tappedToAnalyticsButton" destination="MPA-c2-x7V" id="OlM-Mu-BBf"/>
                         <outlet property="termPickerView" destination="brm-BR-e9A" id="xkh-1f-wIW"/>
                         <outlet property="thirdOf3Label" destination="ePg-2x-ATv" id="Blt-xS-aSy"/>
                         <outlet property="thirdOf4Label" destination="p7k-Ay-W2J" id="Y1w-Pd-WFS"/>

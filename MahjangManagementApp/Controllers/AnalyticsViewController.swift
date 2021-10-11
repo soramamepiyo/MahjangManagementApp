@@ -49,6 +49,10 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tappedToAnalyticsButton.isEnabled = false
+        tappedToAnalyticsButton.setTitleColor(.gray, for: .normal)
+        tappedToAnalyticsButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        
         termPickerView.delegate = self
         termPickerView.dataSource = self
         
@@ -88,6 +92,20 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             userNameLabel.text = user.name + "さん"
         }
     }
+    
+    @IBAction func tappedToHomeViewController(_ sender: Any) {
+        presentToHomeViewController()
+    }
+    
+    @IBAction func tappedToHistoryViewController(_ sender: Any) {
+        presentToHistoryViewController()
+    }
+    
+    @IBAction func tappedToAddRulebutton(_ sender: Any) {
+        presentToAddRuleViewController()
+    }
+    
+    @IBOutlet weak var tappedToAnalyticsButton: UIButton!
     
     func pickerView(_ pickerView: UIPickerView,titleForRow row: Int,forComponent component: Int) -> String? {
             
@@ -167,14 +185,17 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                     case 1:
                         print("3麻で1着のデータが見つかりました。")
                         firstOf3 = firstOf3 + 1
+                        firstOf3Label.text = String(firstOf3)
                     
                     case 2:
                         print("3麻で2着のデータが見つかりました。")
                         secondOf3 = secondOf3 + 1
+                        secondOf3Label.text = String(secondOf3)
                         
                     case 3:
                         print("3麻で3着のデータが見つかりました。")
                         thirdOf3 = thirdOf3 + 1
+                        thirdOf3Label.text = String(thirdOf3)
                         
                     default:
                         break
@@ -186,8 +207,6 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                     
                 }
             })
-            
-            print("計算をするよ")
             
             let totalOf4: Float = Float(firstOf4 + secondOf4 + thirdOf4 + forthOf4)
             let totalOf3: Float = Float(firstOf3 + secondOf3 + thirdOf3)
@@ -215,10 +234,38 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         avarageRankOf4Label.text = avarageOf4Text
         avarageRankOf3Label.text = avarageOf3Text
+    
+        if totalOf4 == 0 {
+            avarageRankOf4Label.text = "------"
+        }
+        
+        if totalOf3 == 0 {
+            avarageRankOf3Label.text = "------"
+        }
         
         
-        
-        
+    }
+    
+    
+    private func presentToHomeViewController() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        let homeViewController = storyboard.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
+        homeViewController.modalPresentationStyle = .fullScreen
+        self.present(homeViewController, animated: true, completion: nil)
+    }
+    
+    private func presentToHistoryViewController() {
+        let storyboard = UIStoryboard(name: "History", bundle: nil)
+        let historyViewController = storyboard.instantiateViewController(identifier: "HistoryViewController") as! HistoryViewController
+        historyViewController.modalPresentationStyle = .fullScreen
+        self.present(historyViewController, animated: true, completion: nil)
+    }
+    
+    private func presentToAddRuleViewController() {
+        let storyboard = UIStoryboard(name: "AddRule", bundle: nil)
+        let addRuleViewController = storyboard.instantiateViewController(identifier: "AddRuleViewController") as! AddRuleViewController
+        addRuleViewController.modalPresentationStyle = .fullScreen
+        self.present(addRuleViewController, animated: true, completion: nil)
     }
     
     

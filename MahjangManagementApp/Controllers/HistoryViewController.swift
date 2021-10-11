@@ -38,6 +38,21 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 75
     }
     
+    //セルの編集許可
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool
+    {
+        return true
+    }
+    
+    //スワイプしたセルを削除　※arrayNameは変数名に変更してください
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            resuts.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
+        }
+    }
+
+    
     @IBOutlet weak var historyTableView: UITableView!
     
     let db = Firestore.firestore()
@@ -49,13 +64,23 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         presentToHomeViewController()
     }
     
+    @IBOutlet weak var tappedToHistoryButton: UIButton!
+    
     @IBAction func tappedAddRuleButton(_ sender: Any) {
         presentToAddRuleViewController()
+    }
+    
+    @IBAction func tappedToAnalyticsButton(_ sender: Any) {
+        presentToAnalyticsViewController()
     }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tappedToHistoryButton.isEnabled = false
+        tappedToHistoryButton.setTitleColor(.gray, for: .normal)
+        tappedToHistoryButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         historyTableView.delegate = self
         historyTableView.dataSource = self
@@ -123,5 +148,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.present(addRuleViewController, animated: true, completion: nil)
     }
     
+    private func presentToAnalyticsViewController() {
+        let storyboard = UIStoryboard(name: "Analytics", bundle: nil)
+        let analyticsViewController = storyboard.instantiateViewController(identifier: "AnalyticsViewController") as! AnalyticsViewController
+        analyticsViewController.modalPresentationStyle = .fullScreen
+        self.present(analyticsViewController, animated: true, completion: nil)
+    }
+ 
+    
 }
-

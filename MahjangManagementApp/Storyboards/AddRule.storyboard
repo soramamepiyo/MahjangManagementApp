@@ -32,22 +32,29 @@
                                 <rect key="frame" x="0.0" y="750" width="390" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz6-dc-9Ju">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="60"/>
                                         <state key="normal" title="ADD"/>
                                         <connections>
                                             <action selector="tappedAddResultButton:" destination="XGj-DG-h9Z" eventType="touchUpInside" id="bi7-ra-s3R"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xp-VP-ez9">
-                                        <rect key="frame" x="130" y="0.0" width="130" height="60"/>
+                                        <rect key="frame" x="97.666666666666686" y="0.0" width="97.333333333333314" height="60"/>
                                         <state key="normal" title="HISTORY"/>
                                         <connections>
                                             <action selector="tappedHistoryButton:" destination="XGj-DG-h9Z" eventType="touchUpInside" id="MJG-pK-7qB"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHv-Nd-OFy">
-                                        <rect key="frame" x="260" y="0.0" width="130" height="60"/>
+                                        <rect key="frame" x="195" y="0.0" width="97.666666666666686" height="60"/>
                                         <state key="normal" title="ADD RULE"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZyX-Hn-uSJ">
+                                        <rect key="frame" x="292.66666666666669" y="0.0" width="97.333333333333314" height="60"/>
+                                        <state key="normal" title="ANALYSE"/>
+                                        <connections>
+                                            <action selector="tappedToAnalyticsButton:" destination="XGj-DG-h9Z" eventType="touchUpInside" id="5JI-Xv-4v3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -230,6 +237,7 @@
                         <outlet property="kaeshitenTextField" destination="prw-nN-UUp" id="oTT-Hu-W6Y"/>
                         <outlet property="modeSelectSegmentedControl" destination="A2M-qm-XIB" id="VzF-Nm-YMt"/>
                         <outlet property="ruleNameTextField" destination="YYn-Zb-xzn" id="Pmu-f4-viU"/>
+                        <outlet property="tappedToAddRuleButton" destination="RHv-Nd-OFy" id="8vz-DF-pDd"/>
                         <outlet property="userNameLabel" destination="vq1-5W-IfB" id="7pH-JU-dps"/>
                         <outlet property="zyunitenTextField" destination="rEf-Ll-10H" id="IKg-z1-aVT"/>
                     </connections>

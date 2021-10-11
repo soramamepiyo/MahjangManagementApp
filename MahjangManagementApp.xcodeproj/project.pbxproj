@@ -28,6 +28,8 @@
 		829CDD192706E26500FB4931 /* AddRule.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDD182706E26500FB4931 /* AddRule.storyboard */; };
 		829CDD1B2706E27A00FB4931 /* AddRuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD1A2706E27A00FB4931 /* AddRuleViewController.swift */; };
 		829CDD1F270AE2AD00FB4931 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD1E270AE2AD00FB4931 /* Rule.swift */; };
+		829CDD2127128AFB00FB4931 /* Analytics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDD2027128AFA00FB4931 /* Analytics.storyboard */; };
+		829CDD2327128B4A00FB4931 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD2227128B4A00FB4931 /* AnalyticsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +58,8 @@
 		829CDD182706E26500FB4931 /* AddRule.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AddRule.storyboard; sourceTree = "<group>"; };
 		829CDD1A2706E27A00FB4931 /* AddRuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRuleViewController.swift; sourceTree = "<group>"; };
 		829CDD1E270AE2AD00FB4931 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
+		829CDD2027128AFA00FB4931 /* Analytics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Analytics.storyboard; sourceTree = "<group>"; };
+		829CDD2227128B4A00FB4931 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +127,7 @@
 				829CDD0427041EA000FB4931 /* LoginViewController.swift */,
 				829CDD1427043B3200FB4931 /* HistoryViewController.swift */,
 				829CDD1A2706E27A00FB4931 /* AddRuleViewController.swift */,
+				829CDD2227128B4A00FB4931 /* AnalyticsViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,6 +140,7 @@
 				829CDD0227041DCA00FB4931 /* Login.storyboard */,
 				829CDD1027043AF700FB4931 /* History.storyboard */,
 				829CDD182706E26500FB4931 /* AddRule.storyboard */,
+				829CDD2027128AFA00FB4931 /* Analytics.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -231,6 +237,7 @@
 				829CDCF1270211D600FB4931 /* LaunchScreen.storyboard in Resources */,
 				829CDCEE270211D600FB4931 /* Assets.xcassets in Resources */,
 				829CDD192706E26500FB4931 /* AddRule.storyboard in Resources */,
+				829CDD2127128AFB00FB4931 /* Analytics.storyboard in Resources */,
 				829CDCEC270211D500FB4931 /* Main.storyboard in Resources */,
 				829CDD1127043AF700FB4931 /* History.storyboard in Resources */,
 			);
@@ -296,6 +303,7 @@
 				829CDD1527043B3200FB4931 /* HistoryViewController.swift in Sources */,
 				829CDCE7270211D500FB4931 /* SceneDelegate.swift in Sources */,
 				829CDD0D2704357200FB4931 /* User.swift in Sources */,
+				829CDD2327128B4A00FB4931 /* AnalyticsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,6 +454,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MS44VJ57XU;
 				INFOPLIST_FILE = MahjangManagementApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,6 +475,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MS44VJ57XU;
 				INFOPLIST_FILE = MahjangManagementApp/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

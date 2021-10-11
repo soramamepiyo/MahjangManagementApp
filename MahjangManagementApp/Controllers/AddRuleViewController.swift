@@ -54,13 +54,23 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     @IBAction func tappedAddResultButton(_ sender: Any) {
         presentToHomeViewController()
     }
+    
     @IBAction func tappedHistoryButton(_ sender: Any) {
         presentToHistoryViewController()
     }
     
+    @IBOutlet weak var tappedToAddRuleButton: UIButton!
+    
+    @IBAction func tappedToAnalyticsButton(_ sender: Any) {
+        presentToAnalyticsViewController()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tappedToAddRuleButton.isEnabled = false
+        tappedToAddRuleButton.setTitleColor(.gray, for: .normal)
+        tappedToAddRuleButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         ruleNameTextField.delegate = self
         gentenTextField.delegate = self
@@ -99,7 +109,6 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             
             guard let data = snapshot?.data() else { return }
             let user: User = User.init(dic: data)
-            // print("ユーザー情報の取得に成功しました。\(user.name)")
             
             userNameLabel.text = user.name + "さん"
         }
@@ -227,6 +236,13 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let historyViewController = storyboard.instantiateViewController(identifier: "HistoryViewController") as! HistoryViewController
         historyViewController.modalPresentationStyle = .fullScreen
         self.present(historyViewController, animated: true, completion: nil)
+    }
+    
+    private func presentToAnalyticsViewController() {
+        let storyboard = UIStoryboard(name: "Analytics", bundle: nil)
+        let analyticsViewController = storyboard.instantiateViewController(identifier: "AnalyticsViewController") as! AnalyticsViewController
+        analyticsViewController.modalPresentationStyle = .fullScreen
+        self.present(analyticsViewController, animated: true, completion: nil)
     }
     
 }
