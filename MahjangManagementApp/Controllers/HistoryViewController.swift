@@ -47,6 +47,9 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     //スワイプしたセルを削除　※arrayNameは変数名に変更してください
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCell.EditingStyle.delete {
+            
+            removeDataFromFirestore(index: indexPath.row)
+            
             resuts.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
         }
@@ -57,6 +60,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     let db = Firestore.firestore()
     var resuts:[Result] = []
+    var resultsID:[String] = []
     
     
     //フッターボタンの処理
@@ -113,11 +117,31 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let dic = snapShot.data()
                 let result = Result.init(dic: dic)
                 
+                let resultID: String = snapShot.documentID
+                
                 self.resuts.append(result)
+                self.resultsID.append(resultID)
             })
             
             self.historyTableView.reloadData()
             
+        }
+        
+    }
+    
+    private func removeDataFromFirestore(index: Int) {
+        
+        print("\(index)番目のデータを削除します。")
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+
+        
+        Firestore.firestore().collection("mahjang").document("results").collection(uid).document(resultsID[index]).delete() { err in
+            if let err = err {
+                print("Error removing document: \(err)")
+            } else {
+                print("Document successfully removed!")
+                self.historyTableView.reloadData()
+            }
         }
         
     }
@@ -129,7 +153,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             f.dateStyle = .long
             f.timeStyle = .short
             let formattedDate = f.string(from: date)
-//            print("date: \(formattedDate)")
         
         return formattedDate
     }
@@ -154,6 +177,4 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         analyticsViewController.modalPresentationStyle = .fullScreen
         self.present(analyticsViewController, animated: true, completion: nil)
     }
- 
-    
 }
