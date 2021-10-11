@@ -37,10 +37,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             window.makeKeyAndVisible()
             
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-            let homeViewController = storyboard.instantiateViewController(identifier: "HomeViewController")
+            let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
+            let signUpViewController = storyboard.instantiateViewController(identifier: "ViewController")
             
-            window.rootViewController = homeViewController
+            window.rootViewController = signUpViewController
             
             print("ログイン情報がありません。")
         }

@@ -60,6 +60,11 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         presentToAddRuleViewController()
     }
     
+    @IBAction func tappedAnalyticsButton(_ sender: Any) {
+        presentToAnalyticsViewController()
+    }
+    
+    
     //グローバル変数
     var mode = String()
     var ranking = Int()
@@ -288,6 +293,14 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         addRuleViewController.modalPresentationStyle = .fullScreen
         self.present(addRuleViewController, animated: true, completion: nil)
     }
+    
+    private func presentToAnalyticsViewController() {
+        let storyboard = UIStoryboard(name: "Analytics", bundle: nil)
+        let analyticsViewController = storyboard.instantiateViewController(identifier: "AnalyticsViewController") as! AnalyticsViewController
+        analyticsViewController.modalPresentationStyle = .fullScreen
+        self.present(analyticsViewController, animated: true, completion: nil)
+    }
+    
     
 }
 

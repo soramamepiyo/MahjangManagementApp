@@ -137,9 +137,7 @@ class ViewController: UIViewController {
         let ruleRef = Firestore.firestore().collection("mahjang").document("rules").collection(uid)
         
         for i in 0..<4 {
-            
-//            print("i=", i)
-            
+                        
             ruleRef.addDocument(data: docData[i]) { (err) in
                 if let err = err {
                     print("Firestoreへの保存に失敗しました。\(err)")
@@ -149,9 +147,7 @@ class ViewController: UIViewController {
                     }
                     return
                 }
-            }
-            
-//            print(docData[i])
+            }            
         }
     }
     
@@ -185,7 +181,6 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [], animations: {
             self.view.transform = .identity
         })
-        // print("hide Keyboard")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -46,21 +46,28 @@
                                 <rect key="frame" x="0.0" y="750" width="390" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kCU-2t-ECg">
-                                        <rect key="frame" x="0.0" y="0.0" width="130" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="60"/>
                                         <state key="normal" title="ADD"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gb9-un-rNu">
-                                        <rect key="frame" x="130" y="0.0" width="130" height="60"/>
+                                        <rect key="frame" x="97.666666666666686" y="0.0" width="97.333333333333314" height="60"/>
                                         <state key="normal" title="HISTORY"/>
                                         <connections>
                                             <action selector="tappedHistoryButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="D4H-0U-MD3"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fqx-lu-Rh1">
-                                        <rect key="frame" x="260" y="0.0" width="130" height="60"/>
+                                        <rect key="frame" x="195" y="0.0" width="97.666666666666686" height="60"/>
                                         <state key="normal" title="ADD RULE"/>
                                         <connections>
                                             <action selector="tappedAddRuleButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cu1-ME-zrc"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z8q-f9-dhV">
+                                        <rect key="frame" x="292.66666666666669" y="0.0" width="97.333333333333314" height="60"/>
+                                        <state key="normal" title="ANALYTICS"/>
+                                        <connections>
+                                            <action selector="tappedAnalyticsButton:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="pau-K5-5wu"/>
                                         </connections>
                                     </button>
                                 </subviews>

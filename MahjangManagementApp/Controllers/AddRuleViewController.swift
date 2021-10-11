@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import SnapKit
 import PKHUD
 import Firebase
 import FirebaseAuth
@@ -14,7 +13,7 @@ import FirebaseAuth
 class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+        return 1
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -22,28 +21,17 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return zyunitenData[component][row]
+        return zyunitenData[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-        switch component {
-                case 0:
-                    umaString = zyunitenData[0][row]
-                case 1:
-                    okaString = zyunitenData[1][row]
-                default:
-                    break
-                }
-        
-        zyunitenString = umaString + "  /  " + okaString
-        
-        print("->", zyunitenString)
+        zyunitenString = zyunitenData[row]
+        zyunitenTextField.font = UIFont.systemFont(ofSize: 17)
         zyunitenTextField.text = zyunitenString
     }
     
-    let zyunitenData = [["順位点(ウマ)", "無し", "5-10", "10-20", "10-30", "0-10", "0-20"],
-                ["オカ", "無し", "5(トップ+20)"]]
+    let zyunitenData = ["順位点(ウマ)", "無し", "5-10", "10-20", "10-30", "0-10", "0-20"]
     
     var pickerView2 = UIPickerView()
     
@@ -53,6 +41,7 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var okaString = String()
     var zyunitenString = String()
     
+    @IBOutlet weak var userNameLabel: UILabel!
     
     @IBOutlet weak var modeSelectSegmentedControl: UISegmentedControl!
     @IBOutlet weak var ruleNameTextField: UITextField!
@@ -90,6 +79,31 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         mode = "4"
         modeSelectSegmentedControl.addTarget(self, action: #selector(modeSegmentChanged(_:)), for: UIControl.Event.valueChanged)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        
+        //ユーザー名を表示させる処理
+        guard let uid = Auth.auth().currentUser?.uid else {
+            print("エラー：ユーザ情報を取得できません。")
+            return
+        }
+        
+        let userRef = Firestore.firestore().collection("users").document(uid)
+        
+        userRef.getDocument { [self] (snapshot, err) in
+            if let err = err {
+                print("ユーザー情報の取得に失敗しました。\(err)")
+                return
+            }
+            
+            guard let data = snapshot?.data() else { return }
+            let user: User = User.init(dic: data)
+            // print("ユーザー情報の取得に成功しました。\(user.name)")
+            
+            userNameLabel.text = user.name + "さん"
+        }
+        
     }
     
     func createPickerView() {
@@ -108,9 +122,9 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         zyunitenTextField.endEditing(true)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        zyunitenTextField.endEditing(true)
-    }
+//    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        zyunitenTextField.endEditing(true)
+//    }
     
     @IBAction func tappedAddRuleButton(_ sender: Any) {
         
@@ -173,6 +187,32 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         gentenTextField.text = ""
         kaeshitenTextField.text = ""
         zyunitenTextField.text = ""
+    }
+    
+    @objc func showKeyboard(notification: Notification) {
+        
+        let keyboardFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
+        
+        guard let keyboardMinY = keyboardFrame?.minY else { return }
+        let addRuleButtonMaxY = addRuleButton.frame.maxY
+        
+        let distance = addRuleButtonMaxY - keyboardMinY + 20
+        
+        let transform = CGAffineTransform(translationX: 0, y: -distance)
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [], animations: {
+            self.view.transform = transform
+        })
+    }
+    
+    @objc func hideKeyboard() {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: [], animations: {
+            self.view.transform = .identity
+        })
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     private func presentToHomeViewController() {
