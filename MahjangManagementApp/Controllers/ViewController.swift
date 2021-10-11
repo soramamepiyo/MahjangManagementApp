@@ -24,7 +24,9 @@ class ViewController: UIViewController {
     @IBAction func tappedAlreadyHaveAccountButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let loginViewController = storyboard.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
-        navigationController?.pushViewController(loginViewController, animated: true)
+//        navigationController?.pushViewController(loginViewController, animated: true)
+        loginViewController.modalPresentationStyle = .fullScreen
+        self.present(loginViewController, animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -129,7 +131,8 @@ class ViewController: UIViewController {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let docData = [["mode": "4", "ruleName": "5-10", "genten": 250, "kaeshiten": 250, "zyuniten": "5-10", "createdAt": Timestamp()],
+        let docData = [["mode": "4", "ruleName": "順位点無し", "genten": 250, "kaeshiten": 250, "zyuniten": "無し", "createdAt": Timestamp()],
+                       ["mode": "4", "ruleName": "5-10", "genten": 250, "kaeshiten": 250, "zyuniten": "5-10", "createdAt": Timestamp()],
                        ["mode": "4", "ruleName": "10-20", "genten": 250, "kaeshiten": 250, "zyuniten": "10-20", "createdAt": Timestamp()],
                        ["mode": "4", "ruleName": "10-30", "genten": 250, "kaeshiten": 250, "zyuniten": "10-30", "createdAt": Timestamp()],
                        ["mode": "4", "ruleName": "Mリーグルール", "genten": 250, "kaeshiten": 300, "zyuniten": "10-30", "createdAt": Timestamp()]] as [[String : Any]]

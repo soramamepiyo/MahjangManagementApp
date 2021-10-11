@@ -228,21 +228,21 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
         homeViewController.modalPresentationStyle = .fullScreen
-        self.present(homeViewController, animated: true, completion: nil)
+        self.present(homeViewController, animated: false, completion: nil)
     }
     
     private func presentToHistoryViewController() {
         let storyboard = UIStoryboard(name: "History", bundle: nil)
         let historyViewController = storyboard.instantiateViewController(identifier: "HistoryViewController") as! HistoryViewController
         historyViewController.modalPresentationStyle = .fullScreen
-        self.present(historyViewController, animated: true, completion: nil)
+        self.present(historyViewController, animated: false, completion: nil)
     }
     
     private func presentToAnalyticsViewController() {
         let storyboard = UIStoryboard(name: "Analytics", bundle: nil)
         let analyticsViewController = storyboard.instantiateViewController(identifier: "AnalyticsViewController") as! AnalyticsViewController
         analyticsViewController.modalPresentationStyle = .fullScreen
-        self.present(analyticsViewController, animated: true, completion: nil)
+        self.present(analyticsViewController, animated: false, completion: nil)
     }
     
 }

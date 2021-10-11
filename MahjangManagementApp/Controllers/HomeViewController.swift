@@ -293,21 +293,21 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let storyboard = UIStoryboard(name: "History", bundle: nil)
         let historyViewController = storyboard.instantiateViewController(identifier: "HistoryViewController") as! HistoryViewController
         historyViewController.modalPresentationStyle = .fullScreen
-        self.present(historyViewController, animated: true, completion: nil)
+        self.present(historyViewController, animated: false, completion: nil)
     }
     
     private func presentToAddRuleViewController() {
         let storyboard = UIStoryboard(name: "AddRule", bundle: nil)
         let addRuleViewController = storyboard.instantiateViewController(identifier: "AddRuleViewController") as! AddRuleViewController
         addRuleViewController.modalPresentationStyle = .fullScreen
-        self.present(addRuleViewController, animated: true, completion: nil)
+        self.present(addRuleViewController, animated: false, completion: nil)
     }
     
     private func presentToAnalyticsViewController() {
         let storyboard = UIStoryboard(name: "Analytics", bundle: nil)
         let analyticsViewController = storyboard.instantiateViewController(identifier: "AnalyticsViewController") as! AnalyticsViewController
         analyticsViewController.modalPresentationStyle = .fullScreen
-        self.present(analyticsViewController, animated: true, completion: nil)
+        self.present(analyticsViewController, animated: false, completion: nil)
     }
     
     

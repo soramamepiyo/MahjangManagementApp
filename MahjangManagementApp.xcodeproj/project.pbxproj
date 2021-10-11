@@ -30,6 +30,8 @@
 		829CDD1F270AE2AD00FB4931 /* Rule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD1E270AE2AD00FB4931 /* Rule.swift */; };
 		829CDD2127128AFB00FB4931 /* Analytics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDD2027128AFA00FB4931 /* Analytics.storyboard */; };
 		829CDD2327128B4A00FB4931 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD2227128B4A00FB4931 /* AnalyticsViewController.swift */; };
+		82EFC866271417910054215B /* EditResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82EFC865271417910054215B /* EditResult.storyboard */; };
+		82EFC8682714179E0054215B /* EditResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EFC8672714179E0054215B /* EditResultViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +62,8 @@
 		829CDD1E270AE2AD00FB4931 /* Rule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rule.swift; sourceTree = "<group>"; };
 		829CDD2027128AFA00FB4931 /* Analytics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Analytics.storyboard; sourceTree = "<group>"; };
 		829CDD2227128B4A00FB4931 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
+		82EFC865271417910054215B /* EditResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditResult.storyboard; sourceTree = "<group>"; };
+		82EFC8672714179E0054215B /* EditResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditResultViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,7 @@
 				829CDD1427043B3200FB4931 /* HistoryViewController.swift */,
 				829CDD1A2706E27A00FB4931 /* AddRuleViewController.swift */,
 				829CDD2227128B4A00FB4931 /* AnalyticsViewController.swift */,
+				82EFC8672714179E0054215B /* EditResultViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				829CDD1027043AF700FB4931 /* History.storyboard */,
 				829CDD182706E26500FB4931 /* AddRule.storyboard */,
 				829CDD2027128AFA00FB4931 /* Analytics.storyboard */,
+				82EFC865271417910054215B /* EditResult.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -238,6 +244,7 @@
 				829CDCEE270211D600FB4931 /* Assets.xcassets in Resources */,
 				829CDD192706E26500FB4931 /* AddRule.storyboard in Resources */,
 				829CDD2127128AFB00FB4931 /* Analytics.storyboard in Resources */,
+				82EFC866271417910054215B /* EditResult.storyboard in Resources */,
 				829CDCEC270211D500FB4931 /* Main.storyboard in Resources */,
 				829CDD1127043AF700FB4931 /* History.storyboard in Resources */,
 			);
@@ -299,6 +306,7 @@
 				829CDCE9270211D500FB4931 /* ViewController.swift in Sources */,
 				829CDCF927021D2500FB4931 /* UIColor-Extension.swift in Sources */,
 				829CDCE5270211D500FB4931 /* AppDelegate.swift in Sources */,
+				82EFC8682714179E0054215B /* EditResultViewController.swift in Sources */,
 				829CDD1B2706E27A00FB4931 /* AddRuleViewController.swift in Sources */,
 				829CDD1527043B3200FB4931 /* HistoryViewController.swift in Sources */,
 				829CDCE7270211D500FB4931 /* SceneDelegate.swift in Sources */,

@@ -54,7 +54,31 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
         }
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        print("\(indexPath.row)が選択されました。")
+        
+//        let storyboard = UIStoryboard(name: "EditResult", bundle: nil)
+//        let editResultViewController = storyboard.instantiateViewController(identifier: "EditResultViewController") as! EditResultViewController
+////        navigationController?.pushViewController(editResultViewController, animated: true)
+//        editResultViewController.modalPresentationStyle = .fullScreen
+//        self.present(editResultViewController, animated: true, completion: nil)
+        
+        presentToEditResultViewController(resultID: resultsID[indexPath.row])
+        
+        
+    }
 
+    
+    //画面遷移のための関数
+    private func presentToEditResultViewController(resultID: String) {
+        let storyboard = UIStoryboard(name: "EditResult", bundle: nil)
+        let editResultViewController = storyboard.instantiateViewController(identifier: "EditResultViewController") as! EditResultViewController
+        editResultViewController.resultID = resultID
+        editResultViewController.modalPresentationStyle = .fullScreen
+        self.present(editResultViewController, animated: true, completion: nil)
+    }
     
     @IBOutlet weak var historyTableView: UITableView!
     
@@ -161,20 +185,21 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
         let homeViewController = storyboard.instantiateViewController(identifier: "HomeViewController") as! HomeViewController
         homeViewController.modalPresentationStyle = .fullScreen
-        self.present(homeViewController, animated: true, completion: nil)
+        self.present(homeViewController, animated: false, completion: nil)
     }
     
     private func presentToAddRuleViewController() {
         let storyboard = UIStoryboard(name: "AddRule", bundle: nil)
         let addRuleViewController = storyboard.instantiateViewController(identifier: "AddRuleViewController") as! AddRuleViewController
         addRuleViewController.modalPresentationStyle = .fullScreen
-        self.present(addRuleViewController, animated: true, completion: nil)
+        self.present(addRuleViewController, animated: false, completion: nil)
     }
     
     private func presentToAnalyticsViewController() {
         let storyboard = UIStoryboard(name: "Analytics", bundle: nil)
         let analyticsViewController = storyboard.instantiateViewController(identifier: "AnalyticsViewController") as! AnalyticsViewController
         analyticsViewController.modalPresentationStyle = .fullScreen
-        self.present(analyticsViewController, animated: true, completion: nil)
+        self.present(analyticsViewController, animated: false, completion: nil)
     }
+    
 }
