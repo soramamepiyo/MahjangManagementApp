@@ -405,7 +405,6 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 
                 self.presentToHistoryViewController()
             }
-        
         }
         
         print(docData)

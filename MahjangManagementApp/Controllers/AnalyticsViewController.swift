@@ -9,6 +9,7 @@ import UIKit
 import PKHUD
 import Firebase
 import FirebaseAuth
+import FirebaseFirestore
 
 class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
@@ -38,11 +39,12 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var pointOf4Label: UILabel!
     @IBOutlet weak var pointOf3Label: UILabel!
     
-    let termList = [
-        "全期間",
-        "1月", "2月", "3月", "4月", "5月", "6月",
-        "7月", "8月", "9月", "10月", "11月", "12月"
-        ]
+//    let termList = [
+//        "全期間",
+//        "1月", "2月", "3月", "4月", "5月", "6月",
+//        "7月", "8月", "9月", "10月", "11月", "12月"]
+    
+    let termList = ["全期間"]
     
     var selectedTerm: String = ""
     
@@ -157,19 +159,15 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                     
                     case 1:
                         firstOf4 = firstOf4 + 1
-                        firstOf4Label.text = String(firstOf4)
-                    
+                                        
                     case 2:
                         secondOf4 = secondOf4 + 1
-                        secondOf4Label.text = String(secondOf4)
                         
                     case 3:
                         thirdOf4 = thirdOf4 + 1
-                        thirdOf4Label.text = String(thirdOf4)
                         
                     case 4:
                         forthOf4 = forthOf4 + 1
-                        forthOf4Label.text = String(forthOf4)
                         
                     default:
                         break
@@ -200,8 +198,24 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 }
             })
             
+//            firstOf4Label.text = String(firstOf4)
+//            secondOf4Label.text = String(secondOf4)
+//            thirdOf4Label.text = String(thirdOf4)
+//            forthOf4Label.text = String(forthOf4)
+
             let totalOf4: Float = Float(firstOf4 + secondOf4 + thirdOf4 + forthOf4)
             let totalOf3: Float = Float(firstOf3 + secondOf3 + thirdOf3)
+            
+            let firstOf4Rate: String = String(format: "%.1f", Float(firstOf4 * 100) / totalOf4)
+            let secondOf4Rate: String = String(format: "%.1f", Float(secondOf4 * 100) / totalOf4)
+            let thirdOf4Rate: String = String(format: "%.1f", Float(thirdOf4 * 100) / totalOf4)
+            let forthOf4Rate: String = String(format: "%.1f", Float(forthOf4 * 100) / totalOf4)
+            
+            firstOf4Label.text = "\(firstOf4)回 (\(firstOf4Rate))%"
+            secondOf4Label.text = "\(secondOf4)回 (\(secondOf4Rate))%"
+            thirdOf4Label.text = "\(thirdOf4)回 (\(thirdOf4Rate))%"
+            forthOf4Label.text = "\(forthOf4)回 (\(forthOf4Rate))%"
+            
             
             let totalRankOf4: Float = Float(firstOf4 * 1 + secondOf4 * 2 + thirdOf4 * 3 + forthOf4 * 4)
             let avarageOf4 = totalRankOf4 / totalOf4
