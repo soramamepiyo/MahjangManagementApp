@@ -59,12 +59,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
         print("\(indexPath.row)が選択されました。")
         
-//        let storyboard = UIStoryboard(name: "EditResult", bundle: nil)
-//        let editResultViewController = storyboard.instantiateViewController(identifier: "EditResultViewController") as! EditResultViewController
-////        navigationController?.pushViewController(editResultViewController, animated: true)
-//        editResultViewController.modalPresentationStyle = .fullScreen
-//        self.present(editResultViewController, animated: true, completion: nil)
-        
         presentToEditResultViewController(resultID: resultsID[indexPath.row])
         
         
@@ -170,6 +164,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         
     }
     
+    //時刻を見やすく修正する関数
     private func getRuleIdentifierString(date: Date) -> String {
         
         let f = DateFormatter()

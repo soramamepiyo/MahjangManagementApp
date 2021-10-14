@@ -5,7 +5,6 @@
 //  Created by 中西空 on 2021/09/29.
 //
 
-import Foundation
 import UIKit
 import Firebase
 import PKHUD
@@ -33,7 +32,6 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     var user: User? {
         didSet {
-            // print("ユーザー名: ", user?.name)
         }
     }
     
@@ -76,7 +74,6 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var pickerView = UIPickerView()
     
     //標準ルールの設定
-//    var ruleData = ["対局ルールを選択してください", "5-10", "10-20", "10-30", "Mリーグルール"]
     var ruleData = [String]()
     var ruleIDData = [String]()
     
@@ -144,7 +141,6 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 
                 guard let data = snapshot?.data() else { return }
                 let user: User = User.init(dic: data)
-                // print("ユーザー情報の取得に成功しました。\(user.name)")
                 
                 userNameLabel.text = user.name + "さん"
             }
@@ -173,9 +169,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 
                 let ruleName: String = rule.ruleName
                 let ruleID: String = snapShot.documentID
-                
-//                print("rulename: \(ruleName)  ruleID:\(ruleID)")
-                
+                                
                 self.ruleData.append(ruleName)
                 self.ruleIDData.append(ruleID)                
             })

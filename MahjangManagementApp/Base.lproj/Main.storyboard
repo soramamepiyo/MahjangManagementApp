@@ -16,14 +16,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPp-DR-W6c">
-                                <rect key="frame" x="88.000000000000014" y="144" width="214.33333333333337" height="71.666666666666686"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新規登録" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dPp-DR-W6c">
+                                <rect key="frame" x="114.66666666666669" y="144" width="161" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Yzp-4E-z8P">
-                                <rect key="frame" x="60" y="255.66666666666663" width="270" height="250"/>
+                                <rect key="frame" x="60" y="232" width="270" height="250"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="7FJ-xR-Qz5">
                                         <rect key="frame" x="0.0" y="0.0" width="270" height="66.666666666666671"/>
@@ -43,7 +43,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Z2C-wn-jsK">
-                                        <rect key="frame" x="0.0" y="91.666666666666657" width="270" height="66.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="91.666666666666686" width="270" height="66.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zdh-8b-Xsk">
                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="20.333333333333332"/>
@@ -52,7 +52,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="パスワード" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kQC-TW-bC6">
-                                                <rect key="frame" x="0.0" y="20.333333333333375" width="270" height="46.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="20.333333333333318" width="270" height="46.333333333333343"/>
                                                 <color key="backgroundColor" red="0.92941176469999998" green="0.94509803920000002" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -60,7 +60,7 @@
                                         </subviews>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="gNM-mR-gtU">
-                                        <rect key="frame" x="0.0" y="183.33333333333334" width="270" height="66.666666666666657"/>
+                                        <rect key="frame" x="0.0" y="183.33333333333331" width="270" height="66.666666666666686"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="user name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfL-oB-0Vk">
                                                 <rect key="frame" x="0.0" y="0.0" width="270" height="20.333333333333332"/>
@@ -69,7 +69,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="ユーザー名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vfG-Be-a1f">
-                                                <rect key="frame" x="0.0" y="20.333333333333318" width="270" height="46.333333333333343"/>
+                                                <rect key="frame" x="0.0" y="20.333333333333375" width="270" height="46.333333333333343"/>
                                                 <color key="backgroundColor" red="0.92941176469999998" green="0.94509803920000002" blue="0.98431372549999996" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -82,14 +82,14 @@
                                 </constraints>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jYD-Ie-3GS">
-                                <rect key="frame" x="95" y="565.66666666666663" width="200" height="40"/>
+                                <rect key="frame" x="95" y="542" width="200" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.55294117647058827" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="All-Pz-tmY"/>
                                     <constraint firstAttribute="height" constant="40" id="USL-2n-LH9"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
-                                <state key="normal" title="新規登録">
+                                <state key="normal" title="登録">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -97,7 +97,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OC3-0u-ak1">
-                                <rect key="frame" x="55" y="655.66666666666663" width="280" height="30"/>
+                                <rect key="frame" x="55" y="632" width="280" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="280" id="F18-Jc-z07"/>
                                 </constraints>
