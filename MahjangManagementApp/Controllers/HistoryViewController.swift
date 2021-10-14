@@ -14,7 +14,7 @@ import PKHUD
 class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return resuts.count
+        return results.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -26,10 +26,10 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let rankingLabel = cell.contentView.viewWithTag(3) as! UILabel
         let scoreLabel = cell.contentView.viewWithTag(4) as! UILabel
 
-        dateLabel.text = "\(getRuleIdentifierString(date: self.resuts[indexPath.row].date.dateValue()))"
-        ruleLabel.text = "ルール\n\(self.resuts[indexPath.row].rule)"
-        rankingLabel.text = "\(self.resuts[indexPath.row].ranking)着"
-        scoreLabel.text = "\(self.resuts[indexPath.row].score)00点"
+        dateLabel.text = "\(getRuleIdentifierString(date: self.results[indexPath.row].date.dateValue()))"
+        ruleLabel.text = "ルール\n\(self.results[indexPath.row].rule)"
+        rankingLabel.text = "\(self.results[indexPath.row].ranking)着"
+        scoreLabel.text = "\(self.results[indexPath.row].score)00点"
         
         return cell
     }
@@ -50,7 +50,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             
             removeDataFromFirestore(index: indexPath.row)
             
-            resuts.remove(at: indexPath.row)
+            results.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
         }
     }
@@ -77,7 +77,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var historyTableView: UITableView!
     
     let db = Firestore.firestore()
-    var resuts:[Result] = []
+    var results:[Result] = []
     var resultsID:[String] = []
     
     
@@ -136,15 +136,14 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 let result = Result.init(dic: dic)
                 
                 let resultID: String = snapShot.documentID
+                  self.resultsID.append(resultID)
                 
-                self.resuts.append(result)
-                self.resultsID.append(resultID)
+                self.results.insert(result, at: 0)
+                self.resultsID.insert(resultID, at: 0)
+                
             })
-            
             self.historyTableView.reloadData()
-            
         }
-        
     }
     
     private func removeDataFromFirestore(index: Int) {
