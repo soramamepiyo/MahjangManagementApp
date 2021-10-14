@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 import PKHUD
 
 class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -193,6 +194,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         ruleTextField.endEditing(true)
+        scoreTextField.endEditing(true)
     }
     
     @objc func modeSegmentChanged(_ segment:UISegmentedControl) {

@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 import Firebase
+import FirebaseFirestore
 import PKHUD
 
 class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -368,6 +369,7 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         dateTextField.endEditing(true)
         ruleTextField.endEditing(true)
+        scoreTextField.endEditing(true)
     }
     
     private func changeDateTextField() {
