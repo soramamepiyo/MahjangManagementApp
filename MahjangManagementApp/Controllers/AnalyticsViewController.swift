@@ -135,6 +135,9 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         var secondOf3 = 0
         var thirdOf3 = 0
         
+        var pointOf4: Float = 0
+        var pointOf3: Float = 0
+        
         Firestore.firestore().collection("mahjang").document("results").collection(uid).order(by: "date").getDocuments { [self] (snapShots, err) in
             
             if let err = err {
@@ -173,6 +176,8 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                         break
                     }
                     
+                    pointOf4 = pointOf4 + result.point
+                    
                 case "3":
                     switch result.ranking {
                     
@@ -191,6 +196,8 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                     default:
                         break
                     }
+                    
+                    pointOf3 = pointOf3 + result.point
                     
                 default:
                     break
@@ -218,6 +225,8 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             
             let totalRankOf3: Float = Float(firstOf3 * 1 + secondOf3 * 2 + thirdOf3 * 3)
             let avarageOf3 = totalRankOf3 / totalOf3
+            
+            pointOf4Label.text = "\(pointOf4)P"
 
             showAnalytics(totalOf4: Int(totalOf4), totalOf3: Int(totalOf3), avarageOf4: avarageOf4, avarageOf3: avarageOf3)
         }
@@ -237,10 +246,12 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
         if totalOf4 == 0 {
             avarageRankOf4Label.text = "------"
+            pointOf4Label.text = "------"
         }
         
         if totalOf3 == 0 {
             avarageRankOf3Label.text = "------"
+            pointOf3Label.text = "------"
         }
         
         

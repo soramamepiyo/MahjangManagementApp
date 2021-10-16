@@ -151,6 +151,9 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     
     private func loadRules() {
         
+        ruleData = []
+        ruleIDData = []
+        
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         Firestore.firestore().collection("mahjang").document("rules").collection(uid).order(by: "createdAt").getDocuments { (snapShots, err) in
@@ -166,14 +169,17 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             }
             
             snapShots?.documents.forEach({ (snapShot) in
+                
                 let dic = snapShot.data()
                 let rule = Rule.init(dic: dic)
                 
                 let ruleName: String = rule.ruleName
                 let ruleID: String = snapShot.documentID
                 
-                self.ruleData.append(ruleName)
-                self.ruleIDData.append(ruleID)                
+                if rule.mode == self.mode {
+                    self.ruleData.append(ruleName)
+                    self.ruleIDData.append(ruleID)
+                }
             })
         }
     }
@@ -206,6 +212,9 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             
             let rankList = ["1着", "2着", "3着", "4着"]
             rankingSegmentedControl.changeAllSegmentWithArray(arr: rankList)
+            loadRules()
+            ruleTextField.text = ""
+            pickerView.reloadAllComponents()
             
         case 1:
             mode = "3"
@@ -213,6 +222,9 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             
             let rankList = ["1着", "2着", "3着"]
             rankingSegmentedControl.changeAllSegmentWithArray(arr: rankList)
+            loadRules()
+            ruleTextField.text = ""
+            pickerView.reloadAllComponents()
             
         default:
             break
@@ -247,8 +259,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         var secondPoint: Int = 0
         var thirdPoint: Int = 0
         var forthPoint: Int = 0
-        
-        
+                
         
         Firestore.firestore().collection("mahjang").document("rules").collection(uid).document(self.ruleID).getDocument { (snapShot, err) in
             if let err = err {
@@ -268,13 +279,22 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             print("soten = ", soten)
             
             if (rule.mode == "4") {
-                let uma:[String] = rule.zyuniten.components(separatedBy: "-")
                 
-                firstPoint = Int(uma[1])! + (((rule.kaeshiten - rule.genten) / 10) * 4)
-                secondPoint = Int(uma[0])!
-                thirdPoint = (-1) * Int(uma[0])!
-                forthPoint = (-1) * Int(uma[1])!
-                
+                if (rule.zyuniten == "無し") {
+                    
+                    firstPoint = 0
+                    secondPoint = 0
+                    thirdPoint = 0
+                    forthPoint = 0
+                    
+                } else {
+                    let uma:[String] = rule.zyuniten.components(separatedBy: "-")
+                    
+                    firstPoint = Int(uma[1])! + (((rule.kaeshiten - rule.genten) / 10) * 4)
+                    secondPoint = Int(uma[0])!
+                    thirdPoint = (-1) * Int(uma[0])!
+                    forthPoint = (-1) * Int(uma[1])!
+                }
                 
                 if self.ranking == 1 {
                     point = (soten + Float(firstPoint))
@@ -288,15 +308,41 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 } else {
                     print("エラー: 順位が正しく認識できません。")
                 }
+                
+            } else if (rule.mode == "3") {
+                
+                if (rule.zyuniten == "無し") {
+                    
+                    firstPoint = 0
+                    secondPoint = 0
+                    thirdPoint = 0
+                    
+                } else {
+                    let uma:[String] = rule.zyuniten.components(separatedBy: "-")
+                    
+                    firstPoint = Int(uma[1])! + (((rule.kaeshiten - rule.genten) / 10) * 3)
+                    secondPoint = Int(uma[0])!
+                    thirdPoint = (-1) * Int(uma[1])!
+                }
+                
+                if self.ranking == 1 {
+                    point = (soten + Float(firstPoint))
+                    print(point)
+                } else if self.ranking == 2 {
+                    point = (soten + Float(secondPoint))
+                } else if self.ranking == 3 {
+                    point = (soten + Float(thirdPoint))
+                } else {
+                    print("エラー: 順位が正しく認識できません。")
+                }
+                
             } else {
-                //3麻の場合の処理
+                
+                print("モード選択エラーです。")
             }
             
             after(point)
-            
-            
         }
-        
     }
     
     
@@ -314,7 +360,6 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let docData = ["date": date, "mode": self.mode, "rule": rule, "ruleID": self.ruleID, "ranking": self.ranking, "score": score, "point": self.pointGlo] as [String : Any]
             
             let resultRef = Firestore.firestore().collection("mahjang").document("results").collection(uid)
-            
             
             resultRef.addDocument(data: docData) { (err) in
                 if let err = err {
@@ -336,9 +381,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                     
                 }
             }
-            
         })
-        
     }
     
     private func presentToSignUpViewController() {

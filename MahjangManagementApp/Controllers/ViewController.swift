@@ -135,11 +135,15 @@ class ViewController: UIViewController {
                        ["mode": "4", "ruleName": "5-10", "genten": 250, "kaeshiten": 250, "zyuniten": "5-10", "createdAt": Timestamp()],
                        ["mode": "4", "ruleName": "10-20", "genten": 250, "kaeshiten": 250, "zyuniten": "10-20", "createdAt": Timestamp()],
                        ["mode": "4", "ruleName": "10-30", "genten": 250, "kaeshiten": 250, "zyuniten": "10-30", "createdAt": Timestamp()],
-                       ["mode": "4", "ruleName": "Mリーグルール", "genten": 250, "kaeshiten": 300, "zyuniten": "10-30", "createdAt": Timestamp()]] as [[String : Any]]
+                       ["mode": "4", "ruleName": "Mリーグルール", "genten": 250, "kaeshiten": 300, "zyuniten": "10-30", "createdAt": Timestamp()],
+                       ["mode": "3", "ruleName": "順位点無し", "genten": 350, "kaeshiten": 350, "zyuniten": "無し", "createdAt": Timestamp()],
+                       ["mode": "3", "ruleName": "0-10", "genten": 350, "kaeshiten": 350, "zyuniten": "0-10", "createdAt": Timestamp()],
+                       ["mode": "3", "ruleName": "0-15", "genten": 350, "kaeshiten": 350, "zyuniten": "0-15", "createdAt": Timestamp()],
+                       ["mode": "3", "ruleName": "0-20", "genten": 350, "kaeshiten": 350, "zyuniten": "0-20", "createdAt": Timestamp()]] as [[String : Any]]
         
         let ruleRef = Firestore.firestore().collection("mahjang").document("rules").collection(uid)
         
-        for i in 0..<4 {
+        for i in 0..<9 {
                         
             ruleRef.addDocument(data: docData[i]) { (err) in
                 if let err = err {
