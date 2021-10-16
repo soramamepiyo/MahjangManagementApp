@@ -213,11 +213,31 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             let thirdOf4Rate: String = String(format: "%.1f", Float(thirdOf4 * 100) / totalOf4)
             let forthOf4Rate: String = String(format: "%.1f", Float(forthOf4 * 100) / totalOf4)
             
-            firstOf4Label.text = "\(firstOf4)回 (\(firstOf4Rate))%"
-            secondOf4Label.text = "\(secondOf4)回 (\(secondOf4Rate))%"
-            thirdOf4Label.text = "\(thirdOf4)回 (\(thirdOf4Rate))%"
-            forthOf4Label.text = "\(forthOf4)回 (\(forthOf4Rate))%"
+            let firstOf3Rate: String = String(format: "%.1f", Float(firstOf3 * 100) / totalOf3)
+            let secondOf3Rate: String = String(format: "%.1f", Float(secondOf3 * 100) / totalOf3)
+            let thirdOf3Rate: String = String(format: "%.1f", Float(thirdOf3 * 100) / totalOf3)
             
+            if totalOf4 == 0 {
+                firstOf4Label.text = "0回 (0.0)%"
+                secondOf4Label.text = "0回 (0.0)%"
+                thirdOf4Label.text = "0回 (0.0)%"
+                forthOf4Label.text = "0回 (0.0)%"
+            } else {
+                firstOf4Label.text = "\(firstOf4)回 (\(firstOf4Rate))%"
+                secondOf4Label.text = "\(secondOf4)回 (\(secondOf4Rate))%"
+                thirdOf4Label.text = "\(thirdOf4)回 (\(thirdOf4Rate))%"
+                forthOf4Label.text = "\(forthOf4)回 (\(forthOf4Rate))%"
+            }
+            
+            if totalOf3 == 0 {
+                firstOf3Label.text = "0回 (0.0)%"
+                secondOf3Label.text = "0回 (0.0)%"
+                thirdOf3Label.text = "0回 (0.0)%"
+            } else {
+                firstOf3Label.text = "\(firstOf3)回 (\(firstOf3Rate))%"
+                secondOf3Label.text = "\(secondOf3)回 (\(secondOf3Rate))%"
+                thirdOf3Label.text = "\(thirdOf3)回 (\(thirdOf3Rate))%"
+            }
             
             let totalRankOf4: Float = Float(firstOf4 * 1 + secondOf4 * 2 + thirdOf4 * 3 + forthOf4 * 4)
             let avarageOf4 = totalRankOf4 / totalOf4
@@ -227,6 +247,7 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             let avarageOf3 = totalRankOf3 / totalOf3
             
             pointOf4Label.text = "\(pointOf4)P"
+            pointOf3Label.text = "\(pointOf3)P"
 
             showAnalytics(totalOf4: Int(totalOf4), totalOf3: Int(totalOf3), avarageOf4: avarageOf4, avarageOf3: avarageOf3)
         }
