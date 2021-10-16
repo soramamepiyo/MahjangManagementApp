@@ -25,11 +25,23 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let ruleLabel = cell.contentView.viewWithTag(2) as! UILabel
         let rankingLabel = cell.contentView.viewWithTag(3) as! UILabel
         let scoreLabel = cell.contentView.viewWithTag(4) as! UILabel
+        let pointLabel = cell.contentView.viewWithTag(5) as! UILabel
 
         dateLabel.text = "\(getRuleIdentifierString(date: self.results[indexPath.row].date.dateValue()))"
-        ruleLabel.text = "ルール\n\(self.results[indexPath.row].rule)"
+        ruleLabel.text = "\(self.results[indexPath.row].rule)"
         rankingLabel.text = "\(self.results[indexPath.row].ranking)着"
-        scoreLabel.text = "\(self.results[indexPath.row].score)00点"
+        
+        if self.results[indexPath.row].score == 0 {
+            scoreLabel.text = "0点"
+        } else {
+            scoreLabel.text = "\(self.results[indexPath.row].score)00点"
+        }
+        
+        if (self.results[indexPath.row].point > 0) {
+            pointLabel.text = "+\(self.results[indexPath.row].point)P"
+        } else {
+            pointLabel.text = "\(self.results[indexPath.row].point)P"
+        }
         
         return cell
     }

@@ -198,11 +198,6 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 }
             })
             
-//            firstOf4Label.text = String(firstOf4)
-//            secondOf4Label.text = String(secondOf4)
-//            thirdOf4Label.text = String(thirdOf4)
-//            forthOf4Label.text = String(forthOf4)
-
             let totalOf4: Float = Float(firstOf4 + secondOf4 + thirdOf4 + forthOf4)
             let totalOf3: Float = Float(firstOf3 + secondOf3 + thirdOf3)
             

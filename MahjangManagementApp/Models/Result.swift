@@ -16,7 +16,7 @@ struct Result {
     let ruleID: String
     let ranking: Int
     let score: Int
-    
+    let point: Float
     
     init(dic: [String : Any]){
         self.date = dic["date"] as! Timestamp
@@ -25,5 +25,6 @@ struct Result {
         self.ruleID = dic["ruleID"] as! String
         self.ranking = dic["ranking"] as! Int
         self.score = dic["score"] as! Int
+        self.point = dic["point"] as! Float
     }
 }

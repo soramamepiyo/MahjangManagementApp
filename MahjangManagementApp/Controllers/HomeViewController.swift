@@ -71,6 +71,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var mode = String()
     var ranking = Int()
     var ruleID = String()
+    var pointGlo :Float = 0
     
     var pickerView = UIPickerView()
     
@@ -170,7 +171,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 
                 let ruleName: String = rule.ruleName
                 let ruleID: String = snapShot.documentID
-                                
+                
                 self.ruleData.append(ruleName)
                 self.ruleIDData.append(ruleID)                
             })
@@ -237,22 +238,21 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
     }
     
-    //Firestoreにデータを追加
-    private func addResultToFirestore() {
-                
-        guard let rule = self.ruleTextField.text else { return }
-        guard let score: Int = Int(self.scoreTextField.text!) else { return }
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        let date = Timestamp()
+    private func calcZyuniten(uid: String, score: Int, after:@escaping (Float) -> ()){
         
-        let docData = ["date": date, "mode": mode, "rule": rule, "ruleID": ruleID, "ranking": ranking, "score": score] as [String : Any]
+        var soten: Float = 0
+        var point: Float = 0
         
-        let resultRef = Firestore.firestore().collection("mahjang").document("results").collection(uid)
+        var firstPoint: Int = 0
+        var secondPoint: Int = 0
+        var thirdPoint: Int = 0
+        var forthPoint: Int = 0
         
         
-        resultRef.addDocument(data: docData) { (err) in
+        
+        Firestore.firestore().collection("mahjang").document("rules").collection(uid).document(self.ruleID).getDocument { (snapShot, err) in
             if let err = err {
-                print("Firestoreへの保存に失敗しました。\(err)")
+                print("Firestoreからルール情報の取り出しに失敗しました。\(err)")
                 
                 HUD.hide { (_) in
                     HUD.flash(.error, delay: 1)
@@ -261,14 +261,84 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 return
             }
             
-            HUD.flash(.success, onView: self.view, delay: 1) { (_) in
-                print("Firestoreへの保存に成功しました。")
+            let dic = snapShot!.data()
+            let rule = Rule.init(dic: dic!)
+            
+            soten = ((Float(score) - Float(rule.kaeshiten)) / 10)
+            print("soten = ", soten)
+            
+            if (rule.mode == "4") {
+                let uma:[String] = rule.zyuniten.components(separatedBy: "-")
                 
-                self.scoreTextField.text = ""
-                self.rankingSegmentedControl.selectedSegmentIndex = 0
+                firstPoint = Int(uma[1])! + (((rule.kaeshiten - rule.genten) / 10) * 4)
+                secondPoint = Int(uma[0])!
+                thirdPoint = (-1) * Int(uma[0])!
+                forthPoint = (-1) * Int(uma[1])!
                 
+                
+                if self.ranking == 1 {
+                    point = (soten + Float(firstPoint))
+                    print(point)
+                } else if self.ranking == 2 {
+                    point = (soten + Float(secondPoint))
+                } else if self.ranking == 3 {
+                    point = (soten + Float(thirdPoint))
+                } else if self.ranking == 4 {
+                    point = (soten + Float(forthPoint))
+                } else {
+                    print("エラー: 順位が正しく認識できません。")
+                }
+            } else {
+                //3麻の場合の処理
             }
+            
+            after(point)
+            
+            
         }
+        
+    }
+    
+    
+    //Firestoreにデータを追加
+    private func addResultToFirestore() {
+        
+        guard let rule = self.ruleTextField.text else { return }
+        guard let score: Int = Int(self.scoreTextField.text!) else { return }
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        let date = Timestamp()
+        
+        calcZyuniten(uid:uid, score: score, after: { point in
+            self.pointGlo = point
+            
+            let docData = ["date": date, "mode": self.mode, "rule": rule, "ruleID": self.ruleID, "ranking": self.ranking, "score": score, "point": self.pointGlo] as [String : Any]
+            
+            let resultRef = Firestore.firestore().collection("mahjang").document("results").collection(uid)
+            
+            
+            resultRef.addDocument(data: docData) { (err) in
+                if let err = err {
+                    print("Firestoreへの保存に失敗しました。\(err)")
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                }
+                
+                HUD.flash(.success, onView: self.view, delay: 1) { (_) in
+                    print("Firestoreへの保存に成功しました。")
+                    print(docData)
+                    
+                    self.scoreTextField.text = ""
+                    self.rankingSegmentedControl.selectedSegmentIndex = 0
+                    
+                }
+            }
+            
+        })
+        
     }
     
     private func presentToSignUpViewController() {
