@@ -341,6 +341,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 print("モード選択エラーです。")
             }
             
+            point = ceil(point * 1000) / 1000
             after(point)
         }
     }

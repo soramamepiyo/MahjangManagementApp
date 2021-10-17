@@ -183,6 +183,7 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     var mode: String = ""
     
+    var pointGlo :Float = 0
     
     let yearList = ["2000年", "2001年", "2002年", "2003年", "2004年", "2005年", "2006年", "2007年", "2008年", "2009年",
                     "2010年", "2011年", "2012年", "2013年", "2014年", "2015年", "2016年", "2017年", "2018年", "2019年",
@@ -387,13 +388,48 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        let docData = ["date": date, "mode": mode, "rule": rule, "ruleID": ruleID, "ranking": ranking, "score": score] as [String : Any]
+        calcZyuniten(uid:uid, score: score, after: { point in
+            
+            self.pointGlo = point
         
-        let resultRef = Firestore.firestore().collection("mahjang").document("results").collection(uid).document(resultID!)
+            let docData = ["date": date, "mode": self.mode, "rule": self.rule, "ruleID": self.ruleID, "ranking": self.ranking, "score": score, "point": self.pointGlo] as [String : Any]
+            
+            let resultRef = Firestore.firestore().collection("mahjang").document("results").collection(uid).document(self.resultID!)
         
-        resultRef.updateData(docData) { (err) in
+            resultRef.updateData(docData) { (err) in
+                if let err = err {
+                    print("Firestoreの情報の更新に失敗しました。\(err)")
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                }
+                
+                HUD.flash(.success, onView: self.view, delay: 1) { (_) in
+                    print("Firestoreへの保存に成功しました。")
+                    
+                    self.presentToHistoryViewController()
+                }
+            }
+        })
+    }
+    
+    private func calcZyuniten(uid: String, score: Int, after:@escaping (Float) -> ()){
+        
+        var soten: Float = 0
+        var point: Float = 0
+        
+        var firstPoint: Int = 0
+        var secondPoint: Int = 0
+        var thirdPoint: Int = 0
+        var forthPoint: Int = 0
+                
+        
+        Firestore.firestore().collection("mahjang").document("rules").collection(uid).document(self.ruleID).getDocument { (snapShot, err) in
             if let err = err {
-                print("Firestoreの情報の更新に失敗しました。\(err)")
+                print("Firestoreからルール情報の取り出しに失敗しました。\(err)")
                 
                 HUD.hide { (_) in
                     HUD.flash(.error, delay: 1)
@@ -402,14 +438,80 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 return
             }
             
-            HUD.flash(.success, onView: self.view, delay: 1) { (_) in
-                print("Firestoreへの保存に成功しました。")
+            let dic = snapShot!.data()
+            let rule = Rule.init(dic: dic!)
+            
+            soten = ((Float(score) - Float(rule.kaeshiten)) / 10)
+            soten = ceil(soten * 1000) / 1000
+            print("soten = ", soten)
+            
+            if (rule.mode == "4") {
                 
-                self.presentToHistoryViewController()
+                if (rule.zyuniten == "無し") {
+                    
+                    firstPoint = 0
+                    secondPoint = 0
+                    thirdPoint = 0
+                    forthPoint = 0
+                    
+                } else {
+                    let uma:[String] = rule.zyuniten.components(separatedBy: "-")
+                    
+                    firstPoint = Int(uma[1])! + (((rule.kaeshiten - rule.genten) / 10) * 4)
+                    firstPoint = Int(ceil(Float(firstPoint) * 1000) / 1000)
+                    secondPoint = Int(uma[0])!
+                    thirdPoint = (-1) * Int(uma[0])!
+                    forthPoint = (-1) * Int(uma[1])!
+                }
+                
+                if self.ranking == 1 {
+                    point = (soten + Float(firstPoint))
+                    print(point)
+                } else if self.ranking == 2 {
+                    point = (soten + Float(secondPoint))
+                } else if self.ranking == 3 {
+                    point = (soten + Float(thirdPoint))
+                } else if self.ranking == 4 {
+                    point = (soten + Float(forthPoint))
+                } else {
+                    print("エラー: 順位が正しく認識できません。")
+                }
+                
+            } else if (rule.mode == "3") {
+                
+                if (rule.zyuniten == "無し") {
+                    
+                    firstPoint = 0
+                    secondPoint = 0
+                    thirdPoint = 0
+                    
+                } else {
+                    let uma:[String] = rule.zyuniten.components(separatedBy: "-")
+                    
+                    firstPoint = Int(uma[1])! + (((rule.kaeshiten - rule.genten) / 10) * 3)
+                    secondPoint = Int(uma[0])!
+                    thirdPoint = (-1) * Int(uma[1])!
+                }
+                
+                if self.ranking == 1 {
+                    point = (soten + Float(firstPoint))
+                    print(point)
+                } else if self.ranking == 2 {
+                    point = (soten + Float(secondPoint))
+                } else if self.ranking == 3 {
+                    point = (soten + Float(thirdPoint))
+                } else {
+                    print("エラー: 順位が正しく認識できません。")
+                }
+                
+            } else {
+                
+                print("モード選択エラーです。")
             }
+            
+            point = ceil(point * 1000) / 1000
+            after(point)
         }
-        
-        print(docData)
     }
     
     func dateFromString(_ dateSting : String, _ format : String) -> Date {
