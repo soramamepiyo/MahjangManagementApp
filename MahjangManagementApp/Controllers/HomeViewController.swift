@@ -379,6 +379,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                     
                     self.scoreTextField.text = ""
                     self.rankingSegmentedControl.selectedSegmentIndex = 0
+                    self.ranking = 1
                     
                 }
             }
