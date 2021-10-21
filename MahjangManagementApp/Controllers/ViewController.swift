@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 import PKHUD
 
 class ViewController: UIViewController {
@@ -24,9 +25,10 @@ class ViewController: UIViewController {
     @IBAction func tappedAlreadyHaveAccountButton(_ sender: Any) {
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
         let loginViewController = storyboard.instantiateViewController(identifier: "LoginViewController") as! LoginViewController
-//        navigationController?.pushViewController(loginViewController, animated: true)
-        loginViewController.modalPresentationStyle = .fullScreen
-        self.present(loginViewController, animated: true, completion: nil)
+        navigationController?.pushViewController(loginViewController, animated: true)
+//        loginViewController.modalPresentationStyle = .fullScreen
+//        self.present(loginViewController, animated: true, completion: nil)
+    
     }
     
     override func viewDidLoad() {
@@ -43,7 +45,7 @@ class ViewController: UIViewController {
     
     private func setUpViews() {
         registerButton.isEnabled = false
-        registerButton.backgroundColor = UIColor.rgb(red: 255, green: 221, blue: 187)
+        registerButton.backgroundColor = UIColor.rgb(red: 141, green: 171, blue: 197)
         
         registerButton.layer.cornerRadius = 10
         
@@ -204,10 +206,10 @@ extension ViewController: UITextFieldDelegate {
         
         if emailIsEmpty || passwordIsEmpty || userNameIsEmpty {
             registerButton.isEnabled = false
-            registerButton.backgroundColor = UIColor.rgb(red: 255, green: 221, blue: 187)
+            registerButton.backgroundColor = UIColor.rgb(red: 141, green: 171, blue: 197)
         } else {
             registerButton.isEnabled = true
-            registerButton.backgroundColor = UIColor.rgb(red: 255, green: 141, blue: 0)
+            registerButton.backgroundColor = UIColor.rgb(red: 23, green: 96, blue: 161)
         }
     }
 }

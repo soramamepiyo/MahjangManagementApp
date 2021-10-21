@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import FirebaseFirestore
 import PKHUD
 
 class LoginViewController: UIViewController {
@@ -72,7 +73,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         loginButton.isEnabled = false
-        loginButton.backgroundColor = UIColor.rgb(red: 255, green: 221, blue: 187)
+        loginButton.backgroundColor = UIColor.rgb(red: 141, green: 171, blue: 197)
         
         loginButton.layer.cornerRadius = 10
         
@@ -89,10 +90,10 @@ extension LoginViewController: UITextFieldDelegate {
         
         if emailIsEmpty || passwordIsEmpty {
             loginButton.isEnabled = false
-            loginButton.backgroundColor = UIColor.rgb(red: 255, green: 221, blue: 187)
+            loginButton.backgroundColor = UIColor.rgb(red: 141, green: 171, blue: 197)
         } else {
             loginButton.isEnabled = true
-            loginButton.backgroundColor = UIColor.rgb(red: 255, green: 141, blue: 0)
+            loginButton.backgroundColor = UIColor.rgb(red: 23, green: 96, blue: 161)
         }
     }
 }

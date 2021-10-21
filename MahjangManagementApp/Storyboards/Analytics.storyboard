@@ -61,7 +61,7 @@
                                     <constraint firstAttribute="height" constant="60" id="K5E-FB-Ops"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="対局ルールを追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfd-WL-Idn">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="集計結果" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kfd-WL-Idn">
                                 <rect key="frame" x="70" y="90.333333333333329" width="250" height="44.999999999999986"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="250" id="t2x-kL-eX8"/>

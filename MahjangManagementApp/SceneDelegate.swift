@@ -39,8 +39,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             
             let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
             let signUpViewController = storyboard.instantiateViewController(identifier: "ViewController")
-            
-            window.rootViewController = signUpViewController
+            let navController = UINavigationController(rootViewController: signUpViewController)
+            window.rootViewController = navController
             
             print("ログイン情報がありません。")
         }

@@ -104,7 +104,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         tappedToHomeButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         addResultButton.isEnabled = false
-        addResultButton.backgroundColor = UIColor.rgb(red: 255, green: 221, blue: 187)
+        addResultButton.backgroundColor = UIColor.rgb(red: 141, green: 171, blue: 197)
         
         addResultButton.layer.cornerRadius = 10
         logoutButton.layer.cornerRadius = 10
@@ -432,10 +432,10 @@ extension HomeViewController: UITextFieldDelegate {
         
         if scoreIsEmpty || ruleIsEmpty {
             addResultButton.isEnabled = false
-            addResultButton.backgroundColor = UIColor.rgb(red: 255, green: 221, blue: 187)
+            addResultButton.backgroundColor = UIColor.rgb(red: 141, green: 171, blue: 197)
         } else {
             addResultButton.isEnabled = true
-            addResultButton.backgroundColor = UIColor.rgb(red: 255, green: 141, blue: 0)
+            addResultButton.backgroundColor = UIColor.rgb(red: 23, green: 96, blue: 161)
         }
         
     }

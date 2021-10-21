@@ -82,13 +82,13 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
             case 0:
                 return 100
             case 1:
-                return 60
+                return 68
             case 2:
-                return 60
+                return 70
             case 3:
-                return 60
+                return 72
             case 4:
-                return 60
+                return 72
             default:
                 return 0
             }
