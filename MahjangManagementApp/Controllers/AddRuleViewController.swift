@@ -79,7 +79,7 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         
         addRuleButton.isEnabled = false
-        addRuleButton.backgroundColor = UIColor.rgb(red: 255, green: 221, blue: 187)
+        addRuleButton.backgroundColor = UIColor.rgb(red: 141, green: 171, blue: 197)
         addRuleButton.layer.cornerRadius = 10
         
         pickerView2.delegate = self
@@ -257,10 +257,10 @@ extension AddRuleViewController: UITextFieldDelegate {
         
         if ruleNameIsEmpty || gentenIsEmpty || kaeshitenIsEmpty || zyunitenIsEmpty {
             addRuleButton.isEnabled = false
-            addRuleButton.backgroundColor = UIColor.rgb(red: 255, green: 221, blue: 187)
+            addRuleButton.backgroundColor = UIColor.rgb(red: 141, green: 171, blue: 197)
         } else {
             addRuleButton.isEnabled = true
-            addRuleButton.backgroundColor = UIColor.rgb(red: 255, green: 141, blue: 0)
+            addRuleButton.backgroundColor = UIColor.rgb(red: 23, green: 96, blue: 161)
         }
         
     }
