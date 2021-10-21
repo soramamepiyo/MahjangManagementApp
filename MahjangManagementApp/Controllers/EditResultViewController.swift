@@ -390,7 +390,7 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         calcZyuniten(uid:uid, score: score, after: { point in
             
-            self.pointGlo = point
+            self.pointGlo = ceil(point * 1000) / 1000
         
             let docData = ["date": date, "mode": self.mode, "rule": self.rule, "ruleID": self.ruleID, "ranking": self.ranking, "score": score, "point": self.pointGlo] as [String : Any]
             

@@ -327,7 +327,6 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 
                 if self.ranking == 1 {
                     point = (soten + Float(firstPoint))
-                    print(point)
                 } else if self.ranking == 2 {
                     point = (soten + Float(secondPoint))
                 } else if self.ranking == 3 {
@@ -356,7 +355,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let date = Timestamp()
         
         calcZyuniten(uid:uid, score: score, after: { point in
-            self.pointGlo = point
+            self.pointGlo = ceil(point * 1000) / 1000
             
             let docData = ["date": date, "mode": self.mode, "rule": rule, "ruleID": self.ruleID, "ranking": self.ranking, "score": score, "point": self.pointGlo] as [String : Any]
             
