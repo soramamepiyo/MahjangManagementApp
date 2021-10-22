@@ -340,7 +340,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 print("モード選択エラーです。")
             }
             
-            point = ceil(point * 1000) / 1000
+            point = Float(truncating: NSDecimalNumber(string: String(point)))
             after(point)
         }
     }
@@ -355,7 +355,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         let date = Timestamp()
         
         calcZyuniten(uid:uid, score: score, after: { point in
-            self.pointGlo = ceil(point * 1000) / 1000
+            self.pointGlo = Float(truncating: NSDecimalNumber(string: String(point)))
             
             let docData = ["date": date, "mode": self.mode, "rule": rule, "ruleID": self.ruleID, "ranking": self.ranking, "score": score, "point": self.pointGlo] as [String : Any]
             
@@ -379,6 +379,10 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                     self.scoreTextField.text = ""
                     self.rankingSegmentedControl.selectedSegmentIndex = 0
                     self.ranking = 1
+                    
+                    self.addResultButton.isEnabled = false
+                    self.addResultButton.backgroundColor = UIColor.rgb(red: 141, green: 171, blue: 197)
+                    
                     
                 }
             }

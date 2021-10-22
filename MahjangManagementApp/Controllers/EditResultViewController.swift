@@ -390,7 +390,7 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         calcZyuniten(uid:uid, score: score, after: { point in
             
-            self.pointGlo = ceil(point * 1000) / 1000
+            self.pointGlo = Float(truncating: NSDecimalNumber(string: String(point)))
         
             let docData = ["date": date, "mode": self.mode, "rule": self.rule, "ruleID": self.ruleID, "ranking": self.ranking, "score": score, "point": self.pointGlo] as [String : Any]
             
@@ -509,7 +509,7 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 print("モード選択エラーです。")
             }
             
-            point = ceil(point * 1000) / 1000
+            point = Float(truncating: NSDecimalNumber(string: String(point)))
             after(point)
         }
     }
