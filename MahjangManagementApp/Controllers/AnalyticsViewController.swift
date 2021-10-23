@@ -246,8 +246,8 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             let totalRankOf3: Float = Float(firstOf3 * 1 + secondOf3 * 2 + thirdOf3 * 3)
             let avarageOf3 = totalRankOf3 / totalOf3
             
-            pointOf4Label.text = "\(pointOf4)P"
-            pointOf3Label.text = "\(pointOf3)P"
+            pointOf4Label.text = "\(String(format: "%.1f", pointOf4))P"
+            pointOf3Label.text = "\(String(format: "%.1f", pointOf3))P"
 
             showAnalytics(totalOf4: Int(totalOf4), totalOf3: Int(totalOf3), avarageOf4: avarageOf4, avarageOf3: avarageOf3)
         }
