@@ -53,7 +53,7 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         super.viewDidLoad()
         
         tappedToAnalyticsButton.isEnabled = false
-        tappedToAnalyticsButton.setTitleColor(.gray, for: .normal)
+        tappedToAnalyticsButton.setTitleColor(UIColor.rgb(red: 0, green: 45, blue: 95), for: .normal)
         tappedToAnalyticsButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         termPickerView.delegate = self

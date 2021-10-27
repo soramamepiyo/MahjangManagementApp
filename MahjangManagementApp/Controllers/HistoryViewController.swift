@@ -113,7 +113,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         super.viewDidLoad()
         
         tappedToHistoryButton.isEnabled = false
-        tappedToHistoryButton.setTitleColor(.black, for: .normal)
+        tappedToHistoryButton.setTitleColor(UIColor.rgb(red: 0, green: 45, blue: 95), for: .normal)
         tappedToHistoryButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         historyTableView.delegate = self

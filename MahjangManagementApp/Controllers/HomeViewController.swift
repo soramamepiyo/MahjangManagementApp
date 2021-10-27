@@ -100,7 +100,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         super.viewDidLoad()
         
         tappedToHomeButton.isEnabled = false
-        tappedToHomeButton.setTitleColor(.gray, for: .normal)
+        tappedToHomeButton.setTitleColor(UIColor.rgb(red: 0, green: 45, blue: 95), for: .normal)
         tappedToHomeButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         addResultButton.isEnabled = false

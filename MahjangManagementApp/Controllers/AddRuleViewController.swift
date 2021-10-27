@@ -69,7 +69,7 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         super.viewDidLoad()
         
         tappedToAddRuleButton.isEnabled = false
-        tappedToAddRuleButton.setTitleColor(.gray, for: .normal)
+        tappedToAddRuleButton.setTitleColor(UIColor.rgb(red: 0, green: 45, blue: 95), for: .normal)
         tappedToAddRuleButton.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .bold)
         
         ruleNameTextField.delegate = self
