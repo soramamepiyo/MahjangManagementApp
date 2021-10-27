@@ -28,39 +28,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hEV-Oa-Yd0">
-                                <rect key="frame" x="0.0" y="750" width="390" height="60"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz6-dc-9Ju">
-                                        <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="60"/>
-                                        <state key="normal" title="ADD"/>
-                                        <connections>
-                                            <action selector="tappedAddResultButton:" destination="XGj-DG-h9Z" eventType="touchUpInside" id="bi7-ra-s3R"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xp-VP-ez9">
-                                        <rect key="frame" x="97.666666666666686" y="0.0" width="97.333333333333314" height="60"/>
-                                        <state key="normal" title="HISTORY"/>
-                                        <connections>
-                                            <action selector="tappedHistoryButton:" destination="XGj-DG-h9Z" eventType="touchUpInside" id="MJG-pK-7qB"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHv-Nd-OFy">
-                                        <rect key="frame" x="195" y="0.0" width="97.666666666666686" height="60"/>
-                                        <state key="normal" title="ADD RULE"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZyX-Hn-uSJ">
-                                        <rect key="frame" x="292.66666666666669" y="0.0" width="97.333333333333314" height="60"/>
-                                        <state key="normal" title="ANALYSE"/>
-                                        <connections>
-                                            <action selector="tappedToAnalyticsButton:" destination="XGj-DG-h9Z" eventType="touchUpInside" id="5JI-Xv-4v3"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="v9R-as-xJN"/>
-                                </constraints>
-                            </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="対局ルールを追加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="teU-cF-3JB">
                                 <rect key="frame" x="70" y="90.333333333333329" width="250" height="44.999999999999986"/>
                                 <constraints>
@@ -204,12 +171,70 @@
                                     <constraint firstAttribute="width" constant="250" id="w38-1O-5Ve"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4wo-Ml-Pbc">
+                                <rect key="frame" x="0.0" y="750" width="390" height="94"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hEV-Oa-Yd0">
+                                        <rect key="frame" x="0.0" y="0.0" width="390" height="60"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bz6-dc-9Ju">
+                                                <rect key="frame" x="0.0" y="0.0" width="97.666666666666671" height="60"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="ADD">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tappedAddResultButton:" destination="XGj-DG-h9Z" eventType="touchUpInside" id="bi7-ra-s3R"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xp-VP-ez9">
+                                                <rect key="frame" x="97.666666666666686" y="0.0" width="97.333333333333314" height="60"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="HISTORY">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tappedHistoryButton:" destination="XGj-DG-h9Z" eventType="touchUpInside" id="MJG-pK-7qB"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHv-Nd-OFy">
+                                                <rect key="frame" x="195" y="0.0" width="97.666666666666686" height="60"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="ADD RULE">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZyX-Hn-uSJ">
+                                                <rect key="frame" x="292.66666666666669" y="0.0" width="97.333333333333314" height="60"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="ANALYSE">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="tappedToAnalyticsButton:" destination="XGj-DG-h9Z" eventType="touchUpInside" id="5JI-Xv-4v3"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="v9R-as-xJN"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="94" id="2ht-EM-K0y"/>
+                                    <constraint firstAttribute="trailing" secondItem="hEV-Oa-Yd0" secondAttribute="trailing" id="4Id-Nc-OeC"/>
+                                    <constraint firstItem="hEV-Oa-Yd0" firstAttribute="leading" secondItem="4wo-Ml-Pbc" secondAttribute="leading" id="mtz-iE-apO"/>
+                                    <constraint firstItem="hEV-Oa-Yd0" firstAttribute="top" secondItem="4wo-Ml-Pbc" secondAttribute="top" id="xzs-jQ-mjB"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="DeD-J6-QBa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="A2M-qm-XIB" firstAttribute="top" secondItem="teU-cF-3JB" secondAttribute="bottom" constant="20" id="370-YS-TFw"/>
                             <constraint firstItem="ttv-1A-nQ0" firstAttribute="centerX" secondItem="AvP-Tc-r8u" secondAttribute="centerX" id="6Gr-GL-TIX"/>
+                            <constraint firstItem="DeD-J6-QBa" firstAttribute="trailing" secondItem="4wo-Ml-Pbc" secondAttribute="trailing" id="6mA-u4-xkC"/>
                             <constraint firstItem="teU-cF-3JB" firstAttribute="top" secondItem="3f3-Xn-nUA" secondAttribute="bottom" constant="25" id="7Wz-T9-kIP"/>
                             <constraint firstItem="Yrf-oZ-rM4" firstAttribute="top" secondItem="A2M-qm-XIB" secondAttribute="bottom" constant="30" id="DKY-jv-FZz"/>
                             <constraint firstItem="vq1-5W-IfB" firstAttribute="leading" secondItem="3f3-Xn-nUA" secondAttribute="trailing" constant="12" id="Gy2-Bb-FpZ"/>
@@ -218,17 +243,16 @@
                             <constraint firstItem="ttv-1A-nQ0" firstAttribute="top" secondItem="77Q-gY-Scw" secondAttribute="bottom" constant="50" id="QQH-g7-FVv"/>
                             <constraint firstItem="Xff-tF-Kw4" firstAttribute="centerX" secondItem="AvP-Tc-r8u" secondAttribute="centerX" id="TlH-oM-IJD"/>
                             <constraint firstItem="YYn-Zb-xzn" firstAttribute="centerX" secondItem="AvP-Tc-r8u" secondAttribute="centerX" id="Wzi-iW-w6q"/>
+                            <constraint firstItem="4wo-Ml-Pbc" firstAttribute="leading" secondItem="AvP-Tc-r8u" secondAttribute="leading" id="acI-75-XcT"/>
                             <constraint firstItem="3f3-Xn-nUA" firstAttribute="top" secondItem="AvP-Tc-r8u" secondAttribute="top" constant="45" id="bWo-pC-ix2"/>
-                            <constraint firstItem="hEV-Oa-Yd0" firstAttribute="leading" secondItem="DeD-J6-QBa" secondAttribute="leading" id="eB9-V7-gG7"/>
                             <constraint firstItem="3f3-Xn-nUA" firstAttribute="leading" secondItem="DeD-J6-QBa" secondAttribute="leading" constant="20" id="hTR-Zn-MXj"/>
                             <constraint firstItem="77Q-gY-Scw" firstAttribute="centerX" secondItem="AvP-Tc-r8u" secondAttribute="centerX" id="hVL-vR-IkJ"/>
-                            <constraint firstItem="DeD-J6-QBa" firstAttribute="bottom" secondItem="hEV-Oa-Yd0" secondAttribute="bottom" id="iTQ-sj-1tg"/>
+                            <constraint firstAttribute="bottom" secondItem="4wo-Ml-Pbc" secondAttribute="bottom" id="l9E-BQ-Ggb"/>
                             <constraint firstItem="YYn-Zb-xzn" firstAttribute="top" secondItem="Yrf-oZ-rM4" secondAttribute="bottom" constant="15" id="mTk-Fi-eTN"/>
                             <constraint firstItem="vq1-5W-IfB" firstAttribute="top" secondItem="AvP-Tc-r8u" secondAttribute="top" constant="45" id="raN-zd-NuC"/>
                             <constraint firstItem="77Q-gY-Scw" firstAttribute="top" secondItem="Xff-tF-Kw4" secondAttribute="bottom" constant="20" id="sUD-AC-eCi"/>
                             <constraint firstItem="Xff-tF-Kw4" firstAttribute="top" secondItem="YYn-Zb-xzn" secondAttribute="bottom" constant="20" id="upw-8L-dym"/>
                             <constraint firstItem="A2M-qm-XIB" firstAttribute="centerX" secondItem="AvP-Tc-r8u" secondAttribute="centerX" id="vAN-gk-dFe"/>
-                            <constraint firstItem="DeD-J6-QBa" firstAttribute="trailing" secondItem="hEV-Oa-Yd0" secondAttribute="trailing" id="wBp-5U-71c"/>
                         </constraints>
                     </view>
                     <connections>

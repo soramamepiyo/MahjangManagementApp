@@ -93,7 +93,7 @@ extension LoginViewController: UITextFieldDelegate {
             loginButton.backgroundColor = UIColor.rgb(red: 141, green: 171, blue: 197)
         } else {
             loginButton.isEnabled = true
-            loginButton.backgroundColor = UIColor.rgb(red: 23, green: 96, blue: 161)
+            loginButton.backgroundColor = UIColor.rgb(red: 0, green: 45, blue: 95)
         }
     }
 }

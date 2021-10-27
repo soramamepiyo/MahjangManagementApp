@@ -70,8 +70,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ef-cY-lG8">
-                                <rect key="frame" x="0.0" y="94" width="390" height="626"/>
-                                <color key="backgroundColor" red="0.86274509803921573" green="0.92941176470588238" blue="0.94117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="0.0" y="94" width="390" height="656"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="55" id="8lr-g4-ExK">
                                         <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="55"/>
@@ -165,7 +165,7 @@
                         <color key="backgroundColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="VDr-zP-mDc" firstAttribute="trailing" secondItem="gt4-40-dUB" secondAttribute="trailing" id="C9V-p5-9Vv"/>
-                            <constraint firstItem="JJr-Nz-aRp" firstAttribute="top" secondItem="5ef-cY-lG8" secondAttribute="bottom" constant="30" id="GgP-42-ATN"/>
+                            <constraint firstItem="JJr-Nz-aRp" firstAttribute="top" secondItem="5ef-cY-lG8" secondAttribute="bottom" id="GgP-42-ATN"/>
                             <constraint firstItem="gt4-40-dUB" firstAttribute="top" secondItem="VDr-zP-mDc" secondAttribute="top" id="Hpy-bg-X0g"/>
                             <constraint firstItem="VDr-zP-mDc" firstAttribute="trailing" secondItem="JJr-Nz-aRp" secondAttribute="trailing" id="MUx-2K-TWZ"/>
                             <constraint firstItem="VDr-zP-mDc" firstAttribute="bottom" secondItem="JJr-Nz-aRp" secondAttribute="bottom" id="bpA-s1-Ecx"/>
