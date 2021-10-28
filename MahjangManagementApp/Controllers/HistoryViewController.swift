@@ -26,10 +26,20 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         let rankingLabel = cell.contentView.viewWithTag(3) as! UILabel
         let scoreLabel = cell.contentView.viewWithTag(4) as! UILabel
         let pointLabel = cell.contentView.viewWithTag(5) as! UILabel
+        let modeImageView = cell.contentView.viewWithTag(6) as! UIImageView
 
         dateLabel.text = "\(getRuleIdentifierString(date: self.results[indexPath.row].date.dateValue()))"
         ruleLabel.text = "\(self.results[indexPath.row].rule)"
         rankingLabel.text = "\(self.results[indexPath.row].ranking)着"
+        
+        switch self.results[indexPath.row].mode {
+        case "4":
+            modeImageView.image = UIImage(named: "Mode4")
+        case "3":
+            modeImageView.image = UIImage(named: "Mode3")
+        default:
+            print("モードエラーです。")
+        }
         
         if self.results[indexPath.row].score == 0 {
             scoreLabel.text = "0点"
@@ -47,7 +57,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 75
     }
     
     //セルの編集許可
