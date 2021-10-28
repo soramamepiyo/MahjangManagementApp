@@ -61,7 +61,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="履歴" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gt4-40-dUB">
-                                <rect key="frame" x="0.0" y="44" width="390" height="50"/>
+                                <rect key="frame" x="0.0" y="40" width="390" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bEB-j8-Elb"/>
                                 </constraints>
@@ -70,7 +70,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ef-cY-lG8">
-                                <rect key="frame" x="0.0" y="94" width="390" height="656"/>
+                                <rect key="frame" x="0.0" y="90" width="390" height="660"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="55" id="8lr-g4-ExK">
@@ -166,7 +166,7 @@
                         <constraints>
                             <constraint firstItem="VDr-zP-mDc" firstAttribute="trailing" secondItem="gt4-40-dUB" secondAttribute="trailing" id="C9V-p5-9Vv"/>
                             <constraint firstItem="JJr-Nz-aRp" firstAttribute="top" secondItem="5ef-cY-lG8" secondAttribute="bottom" id="GgP-42-ATN"/>
-                            <constraint firstItem="gt4-40-dUB" firstAttribute="top" secondItem="VDr-zP-mDc" secondAttribute="top" id="Hpy-bg-X0g"/>
+                            <constraint firstItem="gt4-40-dUB" firstAttribute="top" secondItem="uKT-Wt-kOU" secondAttribute="top" constant="40" id="Hpy-bg-X0g"/>
                             <constraint firstItem="VDr-zP-mDc" firstAttribute="trailing" secondItem="JJr-Nz-aRp" secondAttribute="trailing" id="MUx-2K-TWZ"/>
                             <constraint firstItem="VDr-zP-mDc" firstAttribute="bottom" secondItem="JJr-Nz-aRp" secondAttribute="bottom" id="bpA-s1-Ecx"/>
                             <constraint firstItem="5ef-cY-lG8" firstAttribute="leading" secondItem="VDr-zP-mDc" secondAttribute="leading" id="cJf-pc-zhb"/>
