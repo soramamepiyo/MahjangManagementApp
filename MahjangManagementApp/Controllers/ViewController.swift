@@ -66,12 +66,41 @@ class ViewController: UIViewController {
         
         Auth.auth().createUser(withEmail: email, password: password) { [self] (res, err) in
             if let err = err {
+                
+                var errorMsg = String()
+                
+                switch err.code {
+                
+                case 17007:
+                    errorMsg = "このメールアドレスは既に使用されています。別のアドレスを使用してください。"
+                             
+                case 17008:
+                    errorMsg = "メールアドレスの形式が不正です。メールアドレスを確認してください。"
+                    
+                case 17026:
+                    errorMsg = "パスワードは6文字以上で設定してください。"
+                    
+                default:
+                    errorMsg = "不明なエラーです。開発者に連絡してください。エラーコード：\(String(err.code))"
+                }
+                
+                present(.errorAlert(errorMsg: errorMsg) { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
+                    self.userNameTextField.text = ""
+                    
+                    return
+                })
+                
                 print("認証情報の保存に失敗しました。\(err)")
-                return
+                
             }
-            
-            // print("認証情報の保存に成功しました。")
-            
+                        
             self.addUserInfoToFirestore(email: email)
         }
     }

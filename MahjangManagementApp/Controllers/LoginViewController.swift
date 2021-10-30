@@ -29,8 +29,38 @@ class LoginViewController: UIViewController {
         
         Auth.auth().signIn(withEmail: email, password: password) { (res, err) in
             if let err = err {
-                print("ログイン情報の取得に失敗しました。\(err)")
-                return
+                
+                var errorMsg = String()
+                
+                switch err.code {
+                
+                case 17008:
+                    errorMsg = "メールアドレスの形式が不正です。メールアドレスを確認してください。"
+                    
+                case 17009:
+                    errorMsg = "パスワードが間違っています。再度確認してください。"
+                    
+                case 17011:
+                    errorMsg = "このメールアドレスで登録されたアカウントがありません。"
+                    
+                default:
+                    errorMsg = "不明なエラーです。開発者に連絡してください。エラーコード：\(String(err.code))"
+                }
+                
+                self.present(.errorAlert(errorMsg: errorMsg) { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
+                    
+                    return
+                })
+                
+                print("認証情報の保存に失敗しました。\(err)")
+                
             }
             
             print("ログイン情報の取得に成功しました。")
