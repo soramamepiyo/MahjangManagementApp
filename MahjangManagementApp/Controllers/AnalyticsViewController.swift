@@ -39,14 +39,14 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var pointOf4Label: UILabel!
     @IBOutlet weak var pointOf3Label: UILabel!
     
-//    var termList = [
-//        "全期間",
-//        "2021年10月", "2021年11月", "2021年12月",
-//        "2022年1月", "2022年2月", "2022年3月", "2022年4月", "2022年5月", "2022年6月"]
-        
     var termList = [
         "全期間",
-        "2021年10月", "2021年11月", "2021年12月"]
+        "2021年10月", "2021年11月", "2021年12月",
+        "2022年1月", "2022年2月", "2022年3月", "2022年4月", "2022年5月", "2022年6月"]
+        
+//    var termList = [
+//        "全期間",
+//        "2021年10月", "2021年11月", "2021年12月"]
     
     
         
@@ -145,9 +145,9 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 
         if row == 0 {
             termIsAllShowResults()
-        } else if row <= (termList.count - 1) {
+        } else if row <= 9 {
             
-            var month = row + (termList.count - 1)
+            var month = row + 9
             var year = 2021
             
             if month > 12 {
@@ -155,12 +155,12 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 month -= 12
             }
             
-//            print("\(year)年\(month)月のデータを探索します")
+            print("\(year)年\(month)月のデータを探索します")
             termIsMonthShowResults(year: year, month: month)
             
-        } else if row <= ruleData.count + (termList.count - 1) {
-//            print("\(ruleData[row - termList.count])のデータを探索します")
-//            print("\(ruleIDData[row - 10])")
+        } else if row <= ruleData.count + 9 {
+            print("\(ruleData[row - 10])のデータを探索します")
+            print("ID: \(ruleIDData[row - 10])")
             
             termIsRuleShowResults(id: ruleIDData[row - 10])
         } else {
@@ -474,6 +474,52 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         var pointOf4: Float = 0
         var pointOf3: Float = 0
         
+        Firestore.firestore().collection("mahjang").document("rules").collection(uid).document(id).getDocument { (snapShot, err) in
+            
+            if let err = err {
+                self.present(.errorAlert(errorMsg: "Firestoreからのルール情報の取得に失敗しました。\(err)　エラーコード:DEV034") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
+                
+            } else {
+                let dic = snapShot!.data()
+                let rule = Rule.init(dic: dic!)
+                
+                print("mode = ", rule.mode)
+                
+                if rule.mode == "4" {
+                    
+                    self.firstOf3Label.text = "------"
+                    self.secondOf3Label.text = "------"
+                    self.thirdOf3Label.text = "------"
+                    self.totalOf3Label.text = "------"
+                    self.pointOf3Label.text = "------"
+                    
+                } else if rule.mode == "3" {
+                    
+                    self.firstOf4Label.text = "------"
+                    self.secondOf4Label.text = "------"
+                    self.thirdOf4Label.text = "------"
+                    self.forthOf4Label.text = "------"
+                    self.totalOf4Label.text = "------"
+                    self.pointOf4Label.text = "------"
+                    
+                } else {
+                    self.present(.errorAlert(errorMsg: "対局ルール情報にエラーが見つかりました。　エラーコード:DEV035") { _ in
+
+                        return
+                    })
+                }
+                
+            }
+            
+        }
+        
         Firestore.firestore().collection("mahjang").document("results").collection(uid).order(by: "date").getDocuments { [self] (snapShots, err) in
         
             if let err = err {
@@ -619,7 +665,7 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         Firestore.firestore().collection("mahjang").document("rules").collection(uid).order(by: "createdAt").getDocuments { (snapShots, err) in
             
             if let err = err {
-                    self.present(.errorAlert(errorMsg: "Firestoreからのデータの取得に失敗しました。\(err)　エラーコード:DEV033") { _ in
+                self.present(.errorAlert(errorMsg: "Firestoreからのデータの取得に失敗しました。\(err)　エラーコード:DEV033") { _ in
                     
                     HUD.hide { (_) in
                         HUD.flash(.error, delay: 1)
