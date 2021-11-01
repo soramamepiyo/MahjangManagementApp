@@ -72,16 +72,16 @@ class ViewController: UIViewController {
                 switch err.code {
                 
                 case 17007:
-                    errorMsg = "このメールアドレスは既に使用されています。別のアドレスを使用してください。"
+                    errorMsg = "このメールアドレスは既に使用されています。別のアドレスを使用してください。 エラーコード:DEV005"
                              
                 case 17008:
-                    errorMsg = "メールアドレスの形式が不正です。メールアドレスを確認してください。"
+                    errorMsg = "メールアドレスの形式が不正です。メールアドレスを確認してください。 エラーコード:DEV006"
                     
                 case 17026:
-                    errorMsg = "パスワードは6文字以上で設定してください。"
+                    errorMsg = "パスワードは6文字以上で設定してください。 エラーコード:DEV007"
                     
                 default:
-                    errorMsg = "不明なエラーです。開発者に連絡してください。エラーコード：\(String(err.code))"
+                    errorMsg = "不明なエラーです。開発者に連絡してください。 エラーコード:\(String(err.code)) エラーメッセージ:\(String(err.domain))"
                 }
                 
                 present(.errorAlert(errorMsg: errorMsg) { _ in
@@ -96,8 +96,18 @@ class ViewController: UIViewController {
                     
                     return
                 })
-                
-                print("認証情報の保存に失敗しました。\(err)")
+                                
+                self.present(.errorAlert(errorMsg: "認証情報の保存に失敗しました。 \(err) エラーコード:DEV008") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
+                    
+                    return
+                })
                 
             }
                         
@@ -115,17 +125,20 @@ class ViewController: UIViewController {
         
         userRef.setData(docData) { (err) in
             if let err = err {
-                print("Firestoreへの保存に失敗しました。\(err)")
                 
-                HUD.hide { (_) in
-                    HUD.flash(.error, delay: 1)
-                }
-                
-                return
+                self.present(.errorAlert(errorMsg: "Firestoreへのユーザー情報の保存に失敗しました。 \(err) エラーコード:DEV009") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
+                    
+                    return
+                })
             }
-            
-            // print("Firestoreへの保存に成功しました。")
-            
+                        
             self.fetchUserInfoFromFirestore(userRef: userRef)
         }
     }
@@ -134,13 +147,19 @@ class ViewController: UIViewController {
     private func fetchUserInfoFromFirestore(userRef: DocumentReference) {
         userRef.getDocument { (snapshot, err) in
             if let err = err {
-                print("ユーザー情報の取得に失敗しました。\(err)")
                 
-                HUD.hide { (_) in
-                    HUD.flash(.error, delay: 1)
-                }
+                self.present(.errorAlert(errorMsg: "ユーザー情報の取得に失敗しました。 \(err) エラーコード:DEV010") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    self.emailTextField.text = ""
+                    self.passwordTextField.text = ""
+                    
+                    return
+                })
                 
-                return
             }
             
             guard let data = snapshot?.data() else { return }
@@ -178,12 +197,19 @@ class ViewController: UIViewController {
                         
             ruleRef.addDocument(data: docData[i]) { (err) in
                 if let err = err {
-                    print("Firestoreへの保存に失敗しました。\(err)")
                     
-                    HUD.hide { (_) in
-                        HUD.flash(.error, delay: 1)
-                    }
-                    return
+                    self.present(.errorAlert(errorMsg: "Firestoreへの初期対局ルールの保存に失敗しました。\(err) エラーコード:DEV011") { _ in
+                        
+                        HUD.hide { (_) in
+                            HUD.flash(.error, delay: 1)
+                        }
+                        
+                        self.emailTextField.text = ""
+                        self.passwordTextField.text = ""
+                        
+                        return
+                    })
+                    
                 }
             }            
         }

@@ -35,16 +35,16 @@ class LoginViewController: UIViewController {
                 switch err.code {
                 
                 case 17008:
-                    errorMsg = "メールアドレスの形式が不正です。メールアドレスを確認してください。"
+                    errorMsg = "メールアドレスの形式が不正です。メールアドレスを確認してください。 エラーコード:DEV001"
                     
                 case 17009:
-                    errorMsg = "パスワードが間違っています。再度確認してください。"
+                    errorMsg = "パスワードが間違っています。再度確認してください。 エラーコード:DEV002"
                     
                 case 17011:
-                    errorMsg = "このメールアドレスで登録されたアカウントがありません。"
+                    errorMsg = "このメールアドレスで登録されたアカウントがありません。 エラーコード:DEV003"
                     
                 default:
-                    errorMsg = "不明なエラーです。開発者に連絡してください。エラーコード：\(String(err.code))"
+                    errorMsg = "不明なエラーです。開発者に連絡してください。エラーコード:\(String(err.code)) エラーメッセージ:\(String(err.domain))"
                 }
                 
                 self.present(.errorAlert(errorMsg: errorMsg) { _ in
@@ -59,24 +59,27 @@ class LoginViewController: UIViewController {
                     return
                 })
                 
-                print("認証情報の保存に失敗しました。\(err)")
+//                print("認証情報の保存に失敗しました。\(err)")
                 
             }
-            
-            print("ログイン情報の取得に成功しました。")
-            
+                        
             guard let uid = Auth.auth().currentUser?.uid else { return }
             
             let userRef = Firestore.firestore().collection("users").document(uid)
             userRef.getDocument { (snapshot, err) in
                 if let err = err {
-                    print("ユーザー情報の取得に失敗しました。\(err)")
                     
-                    HUD.hide { (_) in
-                        HUD.flash(.error, delay: 1)
-                    }
-                    
-                    return
+                    self.present(.errorAlert(errorMsg: "ユーザー情報の取得に失敗しました。 \(err) エラーコード:DEV004") { _ in
+                        
+                        HUD.hide { (_) in
+                            HUD.flash(.error, delay: 1)
+                        }
+                        
+                        self.emailTextField.text = ""
+                        self.passwordTextField.text = ""
+                        
+                        return
+                    })
                 }
                 
                 guard let data = snapshot?.data() else { return }
