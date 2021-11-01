@@ -39,10 +39,16 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var pointOf4Label: UILabel!
     @IBOutlet weak var pointOf3Label: UILabel!
     
+//    var termList = [
+//        "全期間",
+//        "2021年10月", "2021年11月", "2021年12月",
+//        "2022年1月", "2022年2月", "2022年3月", "2022年4月", "2022年5月", "2022年6月"]
+        
     var termList = [
         "全期間",
-        "2021年10月", "2021年11月", "2021年12月",
-        "2022年1月", "2022年2月", "2022年3月", "2022年4月", "2022年5月", "2022年6月"]
+        "2021年10月", "2021年11月", "2021年12月"]
+    
+    
         
     var selectedTerm: String = ""
     
@@ -78,7 +84,16 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         //ユーザー名を表示させるための処理
         guard let uid = Auth.auth().currentUser?.uid else {
-            print("エラー：ユーザ情報を取得できません。")
+            
+            self.present(.errorAlert(errorMsg: "ユーザIDの取得に失敗しました。　エラーコード:DEV027") { _ in
+                
+                HUD.hide { (_) in
+                    HUD.flash(.error, delay: 1)
+                }
+                
+                return
+            })
+            
             return
         }
         
@@ -86,8 +101,15 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
         userRef.getDocument { [self] (snapshot, err) in
             if let err = err {
-                print("ユーザー情報の取得に失敗しました。\(err)")
-                return
+                
+                self.present(.errorAlert(errorMsg: "ユーザー情報の取得に失敗しました。\(err)　エラーコード:DEV028") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             }
             
             guard let data = snapshot?.data() else { return }
@@ -123,9 +145,9 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 
         if row == 0 {
             termIsAllShowResults()
-        } else if row <= 9 {
+        } else if row <= (termList.count - 1) {
             
-            var month = row + 9
+            var month = row + (termList.count - 1)
             var year = 2021
             
             if month > 12 {
@@ -133,16 +155,19 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 month -= 12
             }
             
-            print("\(year)年\(month)月のデータを探索します")
+//            print("\(year)年\(month)月のデータを探索します")
             termIsMonthShowResults(year: year, month: month)
             
-        } else if row <= ruleData.count + 9 {
-            print("\(ruleData[row - 10])のデータを探索します")
+        } else if row <= ruleData.count + (termList.count - 1) {
+//            print("\(ruleData[row - termList.count])のデータを探索します")
 //            print("\(ruleIDData[row - 10])")
             
             termIsRuleShowResults(id: ruleIDData[row - 10])
         } else {
-            print("探索エラーです。")
+            self.present(.errorAlert(errorMsg: "探索エラーが発生しました。　エラーコード:DEV029") { _ in
+                
+                return
+            })
         }
             
     }
@@ -166,7 +191,15 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         Firestore.firestore().collection("mahjang").document("results").collection(uid).order(by: "date").getDocuments { [self] (snapShots, err) in
             
             if let err = err {
-                print("Firestoreからのデータの取得に失敗しました。\(err)")
+                
+                self.present(.errorAlert(errorMsg: "Firestoreからのデータの取得に失敗しました。\(err)　エラーコード:DEV030") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
                 
                 HUD.hide { (_) in
                     HUD.flash(.error, delay: 1)
@@ -300,13 +333,15 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         Firestore.firestore().collection("mahjang").document("results").collection(uid).order(by: "date").getDocuments { [self] (snapShots, err) in
         
             if let err = err {
-                print("Firestoreからのデータの取得に失敗しました。\(err)")
                 
-                HUD.hide { (_) in
-                    HUD.flash(.error, delay: 1)
-                }
-                
-                return
+                self.present(.errorAlert(errorMsg: "Firestoreからのデータの取得に失敗しました。\(err)　エラーコード:DEV031") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             }
             
             
@@ -442,13 +477,15 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         Firestore.firestore().collection("mahjang").document("results").collection(uid).order(by: "date").getDocuments { [self] (snapShots, err) in
         
             if let err = err {
-                print("Firestoreからのデータの取得に失敗しました。\(err)")
                 
-                HUD.hide { (_) in
-                    HUD.flash(.error, delay: 1)
-                }
-                
-                return
+                self.present(.errorAlert(errorMsg: "Firestoreからのデータの取得に失敗しました。\(err)　エラーコード:DEV032") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             }
             
             
@@ -582,13 +619,14 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         Firestore.firestore().collection("mahjang").document("rules").collection(uid).order(by: "createdAt").getDocuments { (snapShots, err) in
             
             if let err = err {
-                print("Firestoreからのデータの取得に失敗しました。\(err)")
-                
-                HUD.hide { (_) in
-                    HUD.flash(.error, delay: 1)
-                }
-                
-                return
+                    self.present(.errorAlert(errorMsg: "Firestoreからのデータの取得に失敗しました。\(err)　エラーコード:DEV033") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             }
             
             snapShots?.documents.forEach({ (snapShot) in

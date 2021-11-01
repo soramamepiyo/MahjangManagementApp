@@ -91,7 +91,15 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             try Auth.auth().signOut()
             presentToSignUpViewController()
         } catch (let err) {
-            print("ログアウトに失敗しました。\(err)")
+            
+            self.present(.errorAlert(errorMsg: "ログアウトに失敗しました。\(err) エラーコード:DEV012") { _ in
+                
+                HUD.hide { (_) in
+                    HUD.flash(.error, delay: 1)
+                }
+                
+                return
+            })
         }
     }
     
@@ -129,7 +137,16 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         } else {
             
             guard let uid = Auth.auth().currentUser?.uid else {
-                print("エラー：ユーザ情報を取得できません。")
+                
+                self.present(.errorAlert(errorMsg: "ユーザIDの取得に失敗しました。エラーコード:DEV013") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
+                
                 return
             }
             
@@ -137,8 +154,15 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             
             userRef.getDocument { [self] (snapshot, err) in
                 if let err = err {
-                    print("ユーザー情報の取得に失敗しました。\(err)")
-                    return
+                    
+                    self.present(.errorAlert(errorMsg: "ユーザ情報の取得に失敗しました。\(err)　エラーコード:DEV014") { _ in
+                        
+                        HUD.hide { (_) in
+                            HUD.flash(.error, delay: 1)
+                        }
+                        
+                        return
+                    })
                 }
                 
                 guard let data = snapshot?.data() else { return }
@@ -159,13 +183,15 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         Firestore.firestore().collection("mahjang").document("rules").collection(uid).order(by: "createdAt").getDocuments { (snapShots, err) in
             
             if let err = err {
-                print("Firestoreからのデータの取得に失敗しました。\(err)")
                 
-                HUD.hide { (_) in
-                    HUD.flash(.error, delay: 1)
-                }
-                
-                return
+                self.present(.errorAlert(errorMsg: "Firestoreからのルールの取得に失敗しました。\(err)　エラーコード:DEV015") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             }
             
             snapShots?.documents.forEach({ (snapShot) in
@@ -263,13 +289,15 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         Firestore.firestore().collection("mahjang").document("rules").collection(uid).document(self.ruleID).getDocument { (snapShot, err) in
             if let err = err {
-                print("Firestoreからルール情報の取り出しに失敗しました。\(err)")
                 
-                HUD.hide { (_) in
-                    HUD.flash(.error, delay: 1)
-                }
-                
-                return
+                self.present(.errorAlert(errorMsg: "Firestoreからルール情報の取り出しに失敗しました。\(err)　エラーコード:DEV016") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             }
             
             let dic = snapShot!.data()
@@ -306,7 +334,16 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 } else if self.ranking == 4 {
                     point = (soten + Float(forthPoint))
                 } else {
-                    print("エラー: 順位が正しく認識できません。")
+                    
+                    self.present(.errorAlert(errorMsg: "順位が正しく認識できません。 エラーコード:DEV017") { _ in
+                        
+                        HUD.hide { (_) in
+                            HUD.flash(.error, delay: 1)
+                        }
+                        
+                        return
+                    })
+                    
                 }
                 
             } else if (rule.mode == "3") {
@@ -332,12 +369,29 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                 } else if self.ranking == 3 {
                     point = (soten + Float(thirdPoint))
                 } else {
-                    print("エラー: 順位が正しく認識できません。")
+                    
+                    self.present(.errorAlert(errorMsg: "順位が正しく認識できません。 エラーコード:DEV018") { _ in
+                        
+                        HUD.hide { (_) in
+                            HUD.flash(.error, delay: 1)
+                        }
+                        
+                        return
+                    })
+                    
                 }
                 
             } else {
                 
-                print("モード選択エラーです。")
+                self.present(.errorAlert(errorMsg: "モード選択エラーです。 エラーコード:DEV019") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
+                
             }
             
             point = Float(truncating: NSDecimalNumber(string: String(point)))
@@ -362,19 +416,22 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
             let resultRef = Firestore.firestore().collection("mahjang").document("results").collection(uid)
             
             resultRef.addDocument(data: docData) { (err) in
+                
                 if let err = err {
-                    print("Firestoreへの保存に失敗しました。\(err)")
-                    
-                    HUD.hide { (_) in
-                        HUD.flash(.error, delay: 1)
-                    }
-                    
-                    return
+                    self.present(.errorAlert(errorMsg: "Firestoreへの保存に失敗しました。\(err) エラーコード:DEV020") { _ in
+                        
+                        HUD.hide { (_) in
+                            HUD.flash(.error, delay: 1)
+                        }
+                        
+                        return
+                    })
+            
                 }
                 
                 HUD.flash(.success, onView: self.view, delay: 1) { (_) in
-                    print("Firestoreへの保存に成功しました。")
-                    print(docData)
+//                    print("Firestoreへの保存に成功しました。")
+//                    print(docData)
                     
                     self.scoreTextField.text = ""
                     self.rankingSegmentedControl.selectedSegmentIndex = 0
@@ -382,7 +439,6 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
                     
                     self.addResultButton.isEnabled = false
                     self.addResultButton.backgroundColor = UIColor.rgb(red: 141, green: 171, blue: 197)
-                    
                     
                 }
             }

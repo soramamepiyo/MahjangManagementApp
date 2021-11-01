@@ -38,7 +38,12 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         case "3":
             modeImageView.image = UIImage(named: "Mode3")
         default:
-            print("モードエラーです。")
+            self.present(.errorAlert(errorMsg: "モードエラーです。 エラーコード:DEV021") { _ in
+                
+                HUD.hide { (_) in
+                    HUD.flash(.error, delay: 1)
+                }
+            })
         }
         
         if self.results[indexPath.row].score == 0 {
@@ -78,9 +83,7 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("\(indexPath.row)が選択されました。")
-        
+                
         presentToEditResultViewController(resultID: resultsID[indexPath.row])
         
         
@@ -144,13 +147,15 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
         db.collection("mahjang").document("results").collection(uid).order(by: "date").getDocuments { [self] (snapShots, err) in
             
             if let err = err {
-                print("Firestoreからのデータの取得に失敗しました。\(err)")
                 
-                HUD.hide { (_) in
-                    HUD.flash(.error, delay: 1)
-                }
-                
-                return
+                self.present(.errorAlert(errorMsg: "Firestoreからのルールの取得に失敗しました。\(err)　エラーコード:DEV022") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             }
             
             snapShots?.documents.forEach({ (snapShot) in
@@ -170,15 +175,21 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     private func removeDataFromFirestore(index: Int) {
         
-        print("\(index)番目のデータを削除します。")
+//        print("\(index)番目のデータを削除します。")
         guard let uid = Auth.auth().currentUser?.uid else { return }
 
         
         Firestore.firestore().collection("mahjang").document("results").collection(uid).document(resultsID[index]).delete() { err in
             if let err = err {
-                print("Error removing document: \(err)")
+                self.present(.errorAlert(errorMsg: "Firestoreからのデータの削除に失敗しました。\(err)　エラーコード:DEV023") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             } else {
-                print("Document successfully removed!")
                 self.historyTableView.reloadData()
             }
         }

@@ -95,7 +95,9 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         //ユーザー名を表示させる処理
         guard let uid = Auth.auth().currentUser?.uid else {
-            print("エラー：ユーザ情報を取得できません。")
+            self.present(.errorAlert(errorMsg: "ユーザIDが取得できません。　エラーコード:DEV024") { _ in
+                return
+            })
             return
         }
         
@@ -103,8 +105,14 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         userRef.getDocument { [self] (snapshot, err) in
             if let err = err {
-                print("ユーザー情報の取得に失敗しました。\(err)")
-                return
+                self.present(.errorAlert(errorMsg: "ユーザー情報の取得に失敗しました。\(err)　エラーコード:DEV025") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             }
             
             guard let data = snapshot?.data() else { return }
@@ -140,7 +148,8 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         guard let zyunitenText = zyunitenTextField.text else { return }
         
         if zyunitenText.contains("順位点(ウマ)") || zyunitenText.contains("オカ") {
-            print("選択エラー：タイトルを選択しないでください。")
+            self.present(.errorAlert(errorMsg: "選択エラー：タイトルを選択しないでください。") { _ in
+            })
         } else {
             addRuleToFirestore()
             clearTextField()
@@ -176,13 +185,15 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         
         ruleRef.addDocument(data: docData) { (err) in
             if let err = err {
-                print("Firestoreへの保存に失敗しました。\(err)")
                 
-                HUD.hide { (_) in
-                    HUD.flash(.error, delay: 1)
-                }
-                
-                return
+                self.present(.errorAlert(errorMsg: "Firestoreへの保存に失敗しました。\(err)　エラーコード:DEV026") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             }
             
             HUD.flash(.success, onView: self.view, delay: 1) { (_) in
