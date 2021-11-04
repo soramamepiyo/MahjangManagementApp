@@ -130,6 +130,17 @@
                                     <constraint firstAttribute="bottom" secondItem="hki-u1-Cmf" secondAttribute="bottom" id="wUx-yz-kiu"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a22-gT-9ut">
+                                <rect key="frame" x="112" y="454" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Vty-nl-NSG"/>
+                                    <constraint firstAttribute="width" constant="30" id="aXY-81-AM8"/>
+                                </constraints>
+                                <state key="normal" image="minus"/>
+                                <connections>
+                                    <action selector="tappedScoreMinusButton:" destination="iwj-ZR-goq" eventType="touchUpInside" id="XtX-ep-KVi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hu7-vT-vDk"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -143,6 +154,7 @@
                             <constraint firstItem="ian-hq-fp6" firstAttribute="top" secondItem="ThX-Gf-RmO" secondAttribute="top" id="BtN-si-6RO"/>
                             <constraint firstItem="JeN-jl-BuI" firstAttribute="top" secondItem="Ol3-3n-Cai" secondAttribute="bottom" constant="20" id="CtE-Rm-Wu1"/>
                             <constraint firstItem="rUY-Fp-OFA" firstAttribute="centerX" secondItem="ThX-Gf-RmO" secondAttribute="centerX" id="FHn-fw-CDg"/>
+                            <constraint firstItem="a22-gT-9ut" firstAttribute="top" secondItem="muu-LY-Q1J" secondAttribute="bottom" constant="25" id="G4K-YQ-s50"/>
                             <constraint firstItem="65P-qb-Rqc" firstAttribute="top" secondItem="ian-hq-fp6" secondAttribute="bottom" constant="50" id="Mg6-fK-m9U"/>
                             <constraint firstItem="hu7-vT-vDk" firstAttribute="trailing" secondItem="muu-LY-Q1J" secondAttribute="trailing" constant="10" id="Oa2-qF-We8"/>
                             <constraint firstItem="Zje-4q-a1l" firstAttribute="top" secondItem="JeN-jl-BuI" secondAttribute="bottom" constant="25" id="Pqk-8C-8Jc"/>
@@ -154,6 +166,7 @@
                             <constraint firstItem="ian-hq-fp6" firstAttribute="leading" secondItem="hu7-vT-vDk" secondAttribute="leading" id="dJ8-du-qx5"/>
                             <constraint firstItem="muu-LY-Q1J" firstAttribute="top" secondItem="rUY-Fp-OFA" secondAttribute="bottom" constant="25" id="g6s-Vn-qMy"/>
                             <constraint firstItem="hu7-vT-vDk" firstAttribute="bottom" secondItem="YU6-Xw-ESu" secondAttribute="bottom" constant="15" id="nUE-0e-fKz"/>
+                            <constraint firstItem="gXS-E3-Ljq" firstAttribute="leading" secondItem="a22-gT-9ut" secondAttribute="trailing" constant="5" id="qX5-Gz-gYe"/>
                             <constraint firstItem="Zje-4q-a1l" firstAttribute="centerX" secondItem="ThX-Gf-RmO" secondAttribute="centerX" id="s5O-yg-sOT"/>
                             <constraint firstItem="muu-LY-Q1J" firstAttribute="leading" secondItem="hu7-vT-vDk" secondAttribute="leading" constant="10" id="xJB-C9-vmx"/>
                             <constraint firstItem="jbY-mE-esM" firstAttribute="centerX" secondItem="ThX-Gf-RmO" secondAttribute="centerX" id="xgl-E7-tlQ"/>
@@ -162,6 +175,7 @@
                     </view>
                     <connections>
                         <outlet property="dateTextField" destination="65P-qb-Rqc" id="Vfj-u0-Wtn"/>
+                        <outlet property="minusButton" destination="a22-gT-9ut" id="g5O-x7-aXl"/>
                         <outlet property="rankingSegmentedControl" destination="rUY-Fp-OFA" id="7YY-WB-IDP"/>
                         <outlet property="ruleTextField" destination="JeN-jl-BuI" id="08L-pG-blG"/>
                         <outlet property="scoreTextField" destination="gXS-E3-Ljq" id="gVV-MT-Zeq"/>
@@ -174,6 +188,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="minus" width="1000" height="1000"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

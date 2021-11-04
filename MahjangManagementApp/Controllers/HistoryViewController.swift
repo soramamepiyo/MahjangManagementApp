@@ -52,10 +52,14 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
             scoreLabel.text = "\(self.results[indexPath.row].score)00点"
         }
         
-        if (self.results[indexPath.row].point > 0) {
-            pointLabel.text = "+\(self.results[indexPath.row].point)P"
+        var point = self.results[indexPath.row].point
+        
+        point = round(point * 10) / 10
+        
+        if (point > 0) {
+            pointLabel.text = "+\(point)P"
         } else {
-            pointLabel.text = "\(self.results[indexPath.row].point)P"
+            pointLabel.text = "\(point)P"
         }
         
         return cell

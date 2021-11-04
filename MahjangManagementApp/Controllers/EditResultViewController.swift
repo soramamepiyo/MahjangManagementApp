@@ -155,6 +155,7 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
     @IBOutlet weak var rankingSegmentedControl: UISegmentedControl!
     @IBOutlet weak var scoreTextField: UITextField!
     @IBOutlet weak var updateButton: UIButton!
+    @IBOutlet weak var minusButton: UIButton!
     
     @IBAction func tappedUpdateButton(_ sender: Any) {
         updateResult()
@@ -182,8 +183,12 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
     var minute: Int = 0
     
     var mode: String = ""
+    var scoreIsMinus: Bool = false
     
     var pointGlo :Float = 0
+    
+    let minusButtonImage0 = UIImage(named:"minus")!
+    let minusButtonImage1 = UIImage(named:"tappedMinus")!
     
     let yearList = ["2000年", "2001年", "2002年", "2003年", "2004年", "2005年", "2006年", "2007年", "2008年", "2009年",
                     "2010年", "2011年", "2012年", "2013年", "2014年", "2015年", "2016年", "2017年", "2018年", "2019年",
@@ -376,6 +381,66 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
     private func changeDateTextField() {
         dateTextField.text = "\(year)年\(month)月\(day)日 \(hour):\(minute)"
     }
+    
+    @IBAction func tappedScoreMinusButton(_ sender: Any) {
+        
+        if scoreTextField.text == "" {
+            
+            self.present(.errorAlert(errorMsg: "先に点数を入力してから-ボタンを押してください。　エラーコード:DEV036") { _ in
+
+                return
+            })
+            
+        } else {
+            //状態を把握
+            
+            if scoreIsMinus == true {
+                //scoreが負の場合の処理
+                
+                //マイナスをはずす
+                guard var scoreText: String = scoreTextField.text else { return }
+                
+                if let minus = scoreText.firstIndex(of: "-") {
+                    scoreText.remove(at: minus)
+                }
+                
+                scoreTextField.text = scoreText
+                
+                //画像を変える(明るく)
+                minusButton.setImage(minusButtonImage0, for: .normal)
+
+                //文字色を変える（黒に）
+                scoreTextField.textColor = UIColor.black
+                
+                //scoreIsMinusを変更
+                scoreIsMinus = false
+                
+            } else {
+                //scoreが正の場合の処理
+                
+                //マイナスをつける
+                guard var scoreText: String = scoreTextField.text else { return }
+                
+                if scoreText.prefix(1) != "-" {
+                    scoreText.insert("-", at: scoreText.startIndex)
+                }
+                
+                scoreTextField.text = scoreText
+                
+                //画像を変える（暗く）
+                minusButton.setImage(minusButtonImage1, for: .normal)
+                
+                //文字色を変える（赤に）
+                scoreTextField.textColor = UIColor.red
+                
+                //scoreIsMinusを変更
+                scoreIsMinus = true
+            }
+            
+        }
+        
+    }
+    
     
     //Firestoreの更新処理を行う関数
     private func updateResult() {
