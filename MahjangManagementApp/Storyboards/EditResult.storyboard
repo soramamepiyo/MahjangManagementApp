@@ -24,7 +24,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="300" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gXS-E3-Ljq">
                                 <rect key="frame" x="147" y="449" width="120" height="40"/>
-                                <color key="backgroundColor" red="0.93747268360000002" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="pVk-np-Wdr"/>
                                     <constraint firstAttribute="height" constant="40" id="y3K-fg-Nnf"/>

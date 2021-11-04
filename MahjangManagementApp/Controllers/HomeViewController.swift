@@ -44,6 +44,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var rankingSegmentedControl: UISegmentedControl!
     @IBOutlet weak var scoreTextField: UITextField!
     @IBOutlet weak var addResultButton: UIButton!
+    @IBOutlet weak var scoreMinusButton: UIButton!
     
     //追加ボタンを押した時の処理
     @IBAction func tappedAddResultButton(_ sender: Any) {
@@ -72,6 +73,10 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
     var ranking = Int()
     var ruleID = String()
     var pointGlo :Float = 0
+    var scoreIsMinus: Bool = false
+    
+    let minusButtonImage0 = UIImage(named:"minus")!
+    let minusButtonImage1 = UIImage(named:"tappedMinus")!
     
     var pickerView = UIPickerView()
     
@@ -121,6 +126,7 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         
         modeSelectSwitch.addTarget(self, action: #selector(modeSegmentChanged(_:)), for: UIControl.Event.valueChanged)
         rankingSegmentedControl.addTarget(self, action: #selector(rankingSegmentChanged(_:)), for: UIControl.Event.valueChanged)
+        
         
         loadRules()
         
@@ -276,6 +282,65 @@ class HomeViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDa
         }
     }
     
+    @IBAction func tappedScoreMinusButton(_ sender: Any) {
+        
+        if scoreTextField.text == "" {
+            
+            self.present(.errorAlert(errorMsg: "先に点数を入力してから-ボタンを押してください。　エラーコード:DEV036") { _ in
+
+                return
+            })
+            
+        } else {
+            //状態を把握
+            
+            if scoreIsMinus == true {
+                //scoreが負の場合の処理
+                
+                //マイナスをはずす
+                guard var scoreText: String = scoreTextField.text else { return }
+                
+                if let minus = scoreText.firstIndex(of: "-") {
+                    scoreText.remove(at: minus)
+                }
+                
+                scoreTextField.text = scoreText
+                
+                //画像を変える(明るく)
+                scoreMinusButton.setImage(minusButtonImage0, for: .normal)
+
+                //文字色を変える（黒に）
+                scoreTextField.textColor = UIColor.black
+                
+                //scoreIsMinusを変更
+                scoreIsMinus = false
+                
+            } else {
+                //scoreが正の場合の処理
+                
+                //マイナスをつける
+                guard var scoreText: String = scoreTextField.text else { return }
+                
+                if scoreText.prefix(1) != "-" {
+                    scoreText.insert("-", at: scoreText.startIndex)
+                }
+                
+                scoreTextField.text = scoreText
+                
+                //画像を変える（暗く）
+                scoreMinusButton.setImage(minusButtonImage1, for: .normal)
+                
+                //文字色を変える（赤に）
+                scoreTextField.textColor = UIColor.red
+                
+                //scoreIsMinusを変更
+                scoreIsMinus = true
+            }
+            
+        }
+        
+    }
+        
     private func calcZyuniten(uid: String, score: Int, after:@escaping (Float) -> ()){
         
         var soten: Float = 0
