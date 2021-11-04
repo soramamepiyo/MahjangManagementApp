@@ -21,7 +21,15 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
         } else if pickerView == rulePickerView {
             return 1
         } else {
-            print("PickerViewエラーです。")
+            self.present(.errorAlert(errorMsg: "pickerViewエラーです。　エラーコード:DEV037") { _ in
+                
+                HUD.hide { (_) in
+                    HUD.flash(.error, delay: 1)
+                }
+                
+                return
+            })
+            
             return 1
         }
     }
@@ -47,7 +55,14 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
         } else if pickerView == rulePickerView {
             return ruleData.count
         } else {
-            print("PickerViewエラーです。")
+            self.present(.errorAlert(errorMsg: "pickerViewエラーです。　エラーコード:DEV038") { _ in
+                
+                HUD.hide { (_) in
+                    HUD.flash(.error, delay: 1)
+                }
+                
+                return
+            })
             return 0
         }
     }
@@ -242,13 +257,16 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
             
             Firestore.firestore().collection("mahjang").document("results").collection(uid).document(resultID).addSnapshotListener { (snapShot, err) in
                 if let err = err {
-                    print("Firestoreからの対局結果データの取得に失敗しました。\(err)")
                     
-                    HUD.hide { (_) in
-                        HUD.flash(.error, delay: 1)
-                    }
+                    self.present(.errorAlert(errorMsg: "Firestoreからの対局結果データの取得に失敗しました。\(err)　エラーコード:DEV038") { _ in
+                        
+                        HUD.hide { (_) in
+                            HUD.flash(.error, delay: 1)
+                        }
+                        
+                        return
+                    })
                     
-                    return
                 }
                 
                 let dic = snapShot?.data()
@@ -275,7 +293,11 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 
             }
         } else {
-            print("対局結果データの取得に失敗しました。")
+            
+            self.present(.errorAlert(errorMsg: "対局結果データの取得に失敗しました。　エラーコード:DEV039") { _ in
+                
+                return
+            })
         }
         
         rankingSegmentedControl.addTarget(self, action: #selector(rankingSegmentChanged(_:)), for: UIControl.Event.valueChanged)
@@ -330,13 +352,15 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
         Firestore.firestore().collection("mahjang").document("rules").collection(uid).order(by: "createdAt").getDocuments { (snapShots, err) in
             
             if let err = err {
-                print("Firestoreからのデータの取得に失敗しました。\(err)")
                 
-                HUD.hide { (_) in
-                    HUD.flash(.error, delay: 1)
-                }
-                
-                return
+                self.present(.errorAlert(errorMsg: "Firestoreからのデータの取得に失敗しました。\(err)　エラーコード:DEV040") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             }
             
             snapShots?.documents.forEach({ (snapShot) in
@@ -386,7 +410,7 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         if scoreTextField.text == "" {
             
-            self.present(.errorAlert(errorMsg: "先に点数を入力してから-ボタンを押してください。　エラーコード:DEV036") { _ in
+            self.present(.errorAlert(errorMsg: "先に点数を入力してから-ボタンを押してください。　エラーコード:DEV041") { _ in
 
                 return
             })
@@ -463,17 +487,18 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
             resultRef.updateData(docData) { (err) in
                 if let err = err {
-                    print("Firestoreの情報の更新に失敗しました。\(err)")
                     
-                    HUD.hide { (_) in
-                        HUD.flash(.error, delay: 1)
-                    }
-                    
-                    return
+                    self.present(.errorAlert(errorMsg: "Firestoreからの情報の更新に失敗しました。\(err)　エラーコード:DEV042") { _ in
+                        
+                        HUD.hide { (_) in
+                            HUD.flash(.error, delay: 1)
+                        }
+                        
+                        return
+                    })
                 }
                 
                 HUD.flash(.success, onView: self.view, delay: 1) { (_) in
-                    print("Firestoreへの保存に成功しました。")
                     
                     self.presentToHistoryViewController()
                 }
@@ -494,13 +519,15 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         Firestore.firestore().collection("mahjang").document("rules").collection(uid).document(self.ruleID).getDocument { (snapShot, err) in
             if let err = err {
-                print("Firestoreからルール情報の取り出しに失敗しました。\(err)")
                 
-                HUD.hide { (_) in
-                    HUD.flash(.error, delay: 1)
-                }
-                
-                return
+                self.present(.errorAlert(errorMsg: "Firestoreからの情報の取り出しに失敗しました。\(err)　エラーコード:DEV043") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
             }
             
             let dic = snapShot!.data()
@@ -539,7 +566,9 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 } else if self.ranking == 4 {
                     point = (soten + Float(forthPoint))
                 } else {
-                    print("エラー: 順位が正しく認識できません。")
+                    self.present(.errorAlert(errorMsg: "順位が正しく認識できませんでした。　エラーコード:DEV044") { _ in
+                        return
+                    })
                 }
                 
             } else if (rule.mode == "3") {
@@ -566,12 +595,17 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 } else if self.ranking == 3 {
                     point = (soten + Float(thirdPoint))
                 } else {
-                    print("エラー: 順位が正しく認識できません。")
+                    self.present(.errorAlert(errorMsg: "順位が正しく認識できませんでした。　エラーコード:DEV045") { _ in
+                        return
+                    })
                 }
                 
             } else {
                 
-                print("モード選択エラーです。")
+                self.present(.errorAlert(errorMsg: "モード選択エラーです。　エラーコード:DEV046") { _ in
+                    return
+                })
+                
             }
             
             point = Float(truncating: NSDecimalNumber(string: String(point)))
