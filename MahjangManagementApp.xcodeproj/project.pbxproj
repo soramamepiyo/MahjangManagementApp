@@ -10,6 +10,8 @@
 		685A66D95ABA841627E20D9F /* Pods_MahjangManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1AC1AED0B608419DDAF76E /* Pods_MahjangManagementApp.framework */; };
 		826AEA0D272C460A004AC006 /* UIAlert-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826AEA0C272C460A004AC006 /* UIAlert-Extension.swift */; };
 		8290921A2734CA34001CF202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCED270211D600FB4931 /* Assets.xcassets */; };
+		8290921E27350AD9001CF202 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8290921D27350AD9001CF202 /* ContactViewController.swift */; };
+		8290922027350AEA001CF202 /* Contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8290921F27350AEA001CF202 /* Contact.storyboard */; };
 		829CDCE5270211D500FB4931 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDCE4270211D500FB4931 /* AppDelegate.swift */; };
 		829CDCE7270211D500FB4931 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDCE6270211D500FB4931 /* SceneDelegate.swift */; };
 		829CDCE9270211D500FB4931 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDCE8270211D500FB4931 /* ViewController.swift */; };
@@ -40,6 +42,8 @@
 		1501886E4226900586AA1578 /* Pods-MahjangManagementApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjangManagementApp.debug.xcconfig"; path = "Target Support Files/Pods-MahjangManagementApp/Pods-MahjangManagementApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7EBAEBAF291E8C3DB05671E9 /* Pods-MahjangManagementApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjangManagementApp.release.xcconfig"; path = "Target Support Files/Pods-MahjangManagementApp/Pods-MahjangManagementApp.release.xcconfig"; sourceTree = "<group>"; };
 		826AEA0C272C460A004AC006 /* UIAlert-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIAlert-Extension.swift"; path = "../../../../Documents/UIAlert-Extension.swift"; sourceTree = "<group>"; };
+		8290921D27350AD9001CF202 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
+		8290921F27350AEA001CF202 /* Contact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contact.storyboard; sourceTree = "<group>"; };
 		829CDCE1270211D500FB4931 /* MahjangManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MahjangManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		829CDCE4270211D500FB4931 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		829CDCE6270211D500FB4931 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 				829CDD1A2706E27A00FB4931 /* AddRuleViewController.swift */,
 				829CDD2227128B4A00FB4931 /* AnalyticsViewController.swift */,
 				82EFC86F271701420054215B /* EditResultViewController.swift */,
+				8290921D27350AD9001CF202 /* ContactViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 				829CDD182706E26500FB4931 /* AddRule.storyboard */,
 				829CDD2027128AFA00FB4931 /* Analytics.storyboard */,
 				82EFC86B2716E5EF0054215B /* EditResult.storyboard */,
+				8290921F27350AEA001CF202 /* Contact.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -240,6 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				829CDCFB2703F56000FB4931 /* GoogleService-Info.plist in Resources */,
+				8290922027350AEA001CF202 /* Contact.storyboard in Resources */,
 				829CDCFF27040B9C00FB4931 /* Home.storyboard in Resources */,
 				8290921A2734CA34001CF202 /* Assets.xcassets in Resources */,
 				829CDD0327041DCA00FB4931 /* Login.storyboard in Resources */,
@@ -303,6 +310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				829CDD172706A54000FB4931 /* Result.swift in Sources */,
+				8290921E27350AD9001CF202 /* ContactViewController.swift in Sources */,
 				829CDD0527041EA000FB4931 /* LoginViewController.swift in Sources */,
 				829CDD012704120C00FB4931 /* HomeViewController.swift in Sources */,
 				829CDD1F270AE2AD00FB4931 /* Rule.swift in Sources */,

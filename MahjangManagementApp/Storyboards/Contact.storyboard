@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Contact View Controller-->
+        <scene sceneID="EE8-3L-Fhi">
+            <objects>
+                <viewController storyboardIdentifier="ContactViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="YQC-TV-AMH" customClass="ContactViewController" customModule="MahjangManagementApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6TM-M5-tAa">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="〇〇さん" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9C-Tg-0EN">
+                                <rect key="frame" x="20" y="105" width="69.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vr5-bO-3Wr">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お問い合せ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KvP-Lk-d4X">
+                                        <rect key="frame" x="0.0" y="40" width="414" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="BzE-1B-x5l"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="KvP-Lk-d4X" secondAttribute="bottom" id="Oxf-EI-JfG"/>
+                                    <constraint firstItem="KvP-Lk-d4X" firstAttribute="leading" secondItem="vr5-bO-3Wr" secondAttribute="leading" id="ZQd-Aa-Dnk"/>
+                                    <constraint firstAttribute="trailing" secondItem="KvP-Lk-d4X" secondAttribute="trailing" id="dsC-XJ-x6j"/>
+                                    <constraint firstAttribute="height" constant="90" id="o14-Mr-yOU"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お問い合せ内容" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="phx-QJ-qHw">
+                                <rect key="frame" x="50" y="155.5" width="121.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="SQM-zd-HTG">
+                                <rect key="frame" x="40" y="186" width="334" height="300"/>
+                                <color key="backgroundColor" red="0.93725490196078431" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Gxz-Mz-10S"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dab-vs-awm">
+                                <rect key="frame" x="50" y="506" width="49" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="Yph-bd-Ku0"/>
+                                    <constraint firstAttribute="width" constant="47" id="sU4-ZJ-Ni4"/>
+                                </constraints>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="メールでの返信を希望する。" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rMC-2f-Vz4">
+                                <rect key="frame" x="122" y="506" width="225.5" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="xWM-Uf-18J"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ALg-Hm-loT">
+                                <rect key="frame" x="107" y="587" width="200" height="40"/>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="HOY-6Y-CI1"/>
+                                    <constraint firstAttribute="width" constant="200" id="TGH-Gb-TPY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="送信">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="tappedSendButton:" destination="YQC-TV-AMH" eventType="touchUpInside" id="YCJ-dE-cQb"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Tnb-AZ-wej"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vr5-bO-3Wr" firstAttribute="top" secondItem="6TM-M5-tAa" secondAttribute="top" id="2VC-IW-175"/>
+                            <constraint firstItem="vr5-bO-3Wr" firstAttribute="leading" secondItem="Tnb-AZ-wej" secondAttribute="leading" id="2XX-JG-AKA"/>
+                            <constraint firstItem="vr5-bO-3Wr" firstAttribute="trailing" secondItem="Tnb-AZ-wej" secondAttribute="trailing" id="Gtc-o1-bKi"/>
+                            <constraint firstItem="dab-vs-awm" firstAttribute="leading" secondItem="Tnb-AZ-wej" secondAttribute="leading" constant="50" id="Hvi-vE-6Nn"/>
+                            <constraint firstItem="SQM-zd-HTG" firstAttribute="top" secondItem="phx-QJ-qHw" secondAttribute="bottom" constant="10" id="LZq-MN-ZlG"/>
+                            <constraint firstItem="SQM-zd-HTG" firstAttribute="leading" secondItem="Tnb-AZ-wej" secondAttribute="leading" constant="40" id="Mga-kA-gcy"/>
+                            <constraint firstItem="ALg-Hm-loT" firstAttribute="top" secondItem="rMC-2f-Vz4" secondAttribute="bottom" constant="50" id="QgK-mh-pgS"/>
+                            <constraint firstItem="dab-vs-awm" firstAttribute="top" secondItem="SQM-zd-HTG" secondAttribute="bottom" constant="20" id="e7k-b8-H82"/>
+                            <constraint firstItem="phx-QJ-qHw" firstAttribute="top" secondItem="T9C-Tg-0EN" secondAttribute="bottom" constant="30" id="g72-Og-0QW"/>
+                            <constraint firstItem="rMC-2f-Vz4" firstAttribute="top" secondItem="SQM-zd-HTG" secondAttribute="bottom" constant="20" id="gIH-xf-qkq"/>
+                            <constraint firstItem="T9C-Tg-0EN" firstAttribute="top" secondItem="vr5-bO-3Wr" secondAttribute="bottom" constant="15" id="lzW-oY-06r"/>
+                            <constraint firstItem="T9C-Tg-0EN" firstAttribute="leading" secondItem="Tnb-AZ-wej" secondAttribute="leading" constant="20" id="ovU-ot-uPo"/>
+                            <constraint firstItem="rMC-2f-Vz4" firstAttribute="leading" secondItem="dab-vs-awm" secondAttribute="trailing" constant="25" id="rGo-r3-R5u"/>
+                            <constraint firstItem="phx-QJ-qHw" firstAttribute="leading" secondItem="Tnb-AZ-wej" secondAttribute="leading" constant="50" id="yrX-hA-yS6"/>
+                            <constraint firstItem="ALg-Hm-loT" firstAttribute="centerX" secondItem="6TM-M5-tAa" secondAttribute="centerX" id="zCZ-gF-h0P"/>
+                            <constraint firstItem="Tnb-AZ-wej" firstAttribute="trailing" secondItem="SQM-zd-HTG" secondAttribute="trailing" constant="40" id="zIz-LR-WUq"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="commentTextView" destination="SQM-zd-HTG" id="Ina-5t-w8K"/>
+                        <outlet property="sendButton" destination="ALg-Hm-loT" id="Ib0-0I-zLX"/>
+                        <outlet property="sendMailSwitch" destination="dab-vs-awm" id="TvL-Tb-3It"/>
+                        <outlet property="userNameLabel" destination="T9C-Tg-0EN" id="ZsO-uQ-bLT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jN1-9M-SpM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-231.8840579710145" y="4.0178571428571423"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

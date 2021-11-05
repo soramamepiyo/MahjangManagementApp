@@ -172,6 +172,13 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
             
     }
     
+    @IBAction func tappedContactButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Contact", bundle: nil)
+        let contactViewController = storyboard.instantiateViewController(identifier: "ContactViewController") as! ContactViewController
+        self.present(contactViewController, animated: true, completion: nil)
+    }
+    
+    
     private func termIsAllShowResults() {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
