@@ -8,6 +8,7 @@
 import UIKit
 import PKHUD
 import Firebase
+import FirebaseFirestore
 import FirebaseAuth
 
 class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -36,6 +37,8 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     var pickerView2 = UIPickerView()
     
     var mode = String()
+    
+    let maxLength: Int = 12
     
     var umaString = String()
     var okaString = String()
@@ -121,7 +124,27 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
             userNameLabel.text = user.name + "さん"
         }
         
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(textFieldDidChange(notification:)),
+                                               name: UITextField.textDidChangeNotification,
+                                               object: ruleNameTextField)
+        
     }
+    
+    deinit {
+            NotificationCenter.default.removeObserver(self)
+        }
+
+        // 入力チェック(文字数チェック)処理
+        @objc func textFieldDidChange(notification: NSNotification) {
+            let textField = notification.object as! UITextField
+
+            if let text = textField.text {
+                if textField.markedTextRange == nil && text.count > maxLength {
+                    textField.text = text.prefix(maxLength).description
+                }
+            }
+        }
     
     func createPickerView() {
         

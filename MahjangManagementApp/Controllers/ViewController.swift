@@ -31,10 +31,32 @@ class ViewController: UIViewController {
     
     }
     
+    let maxLength: Int = 8
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpViews()
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(textFieldDidChange(notification:)),
+                                               name: UITextField.textDidChangeNotification,
+                                               object: userNameTextField)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func textFieldDidChange(notification: NSNotification) {
+        let textField = notification.object as! UITextField
+        
+        if let text = textField.text {
+            if textField.markedTextRange == nil && text.count > maxLength {
+                textField.text = text.prefix(maxLength).description
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
