@@ -9,11 +9,11 @@
 /* Begin PBXBuildFile section */
 		685A66D95ABA841627E20D9F /* Pods_MahjangManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1AC1AED0B608419DDAF76E /* Pods_MahjangManagementApp.framework */; };
 		826AEA0D272C460A004AC006 /* UIAlert-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826AEA0C272C460A004AC006 /* UIAlert-Extension.swift */; };
+		8290921A2734CA34001CF202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCED270211D600FB4931 /* Assets.xcassets */; };
 		829CDCE5270211D500FB4931 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDCE4270211D500FB4931 /* AppDelegate.swift */; };
 		829CDCE7270211D500FB4931 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDCE6270211D500FB4931 /* SceneDelegate.swift */; };
 		829CDCE9270211D500FB4931 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDCE8270211D500FB4931 /* ViewController.swift */; };
 		829CDCEC270211D500FB4931 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCEA270211D500FB4931 /* Main.storyboard */; };
-		829CDCEE270211D600FB4931 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCED270211D600FB4931 /* Assets.xcassets */; };
 		829CDCF1270211D600FB4931 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCEF270211D600FB4931 /* LaunchScreen.storyboard */; };
 		829CDCF927021D2500FB4931 /* UIColor-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDCF827021D2500FB4931 /* UIColor-Extension.swift */; };
 		829CDCFB2703F56000FB4931 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCFA2703F56000FB4931 /* GoogleService-Info.plist */; };
@@ -241,10 +241,10 @@
 			files = (
 				829CDCFB2703F56000FB4931 /* GoogleService-Info.plist in Resources */,
 				829CDCFF27040B9C00FB4931 /* Home.storyboard in Resources */,
+				8290921A2734CA34001CF202 /* Assets.xcassets in Resources */,
 				829CDD0327041DCA00FB4931 /* Login.storyboard in Resources */,
 				829CDD0A2704347F00FB4931 /* SignUp.storyboard in Resources */,
 				829CDCF1270211D600FB4931 /* LaunchScreen.storyboard in Resources */,
-				829CDCEE270211D600FB4931 /* Assets.xcassets in Resources */,
 				829CDD192706E26500FB4931 /* AddRule.storyboard in Resources */,
 				829CDD2127128AFB00FB4931 /* Analytics.storyboard in Resources */,
 				82EFC86C2716E5EF0054215B /* EditResult.storyboard in Resources */,
@@ -466,7 +466,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MS44VJ57XU;
 				INFOPLIST_FILE = MahjangManagementApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -474,7 +474,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sorapiyobeans.MahjangManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -487,7 +487,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = MS44VJ57XU;
 				INFOPLIST_FILE = MahjangManagementApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -495,7 +495,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.sorapiyobeans.MahjangManagementApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
