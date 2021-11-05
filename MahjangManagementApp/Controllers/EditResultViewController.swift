@@ -289,6 +289,15 @@ class EditResultViewController: UIViewController, UIPickerViewDelegate, UIPicker
                 
                 self.mode = result.mode
                 self.rankingSegmentedControl.selectedSegmentIndex = (result.ranking - 1)
+                
+                if result.score < 0 {
+                    self.scoreIsMinus = true
+                    
+                    self.minusButton.setImage(self.minusButtonImage1, for: .normal)
+                    
+                    self.scoreTextField.textColor = UIColor.red
+                }
+                
                 self.scoreTextField.text = String(result.score)
                 
             }

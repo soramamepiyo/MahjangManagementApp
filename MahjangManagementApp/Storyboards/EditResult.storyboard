@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -39,7 +39,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbY-mE-esM">
-                                <rect key="frame" x="107" y="534" width="200" height="40"/>
+                                <rect key="frame" x="107" y="519" width="200" height="40"/>
                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="XR5-4h-0cK"/>
@@ -159,7 +159,7 @@
                             <constraint firstItem="hu7-vT-vDk" firstAttribute="trailing" secondItem="muu-LY-Q1J" secondAttribute="trailing" constant="10" id="Oa2-qF-We8"/>
                             <constraint firstItem="Zje-4q-a1l" firstAttribute="top" secondItem="JeN-jl-BuI" secondAttribute="bottom" constant="25" id="Pqk-8C-8Jc"/>
                             <constraint firstItem="JeN-jl-BuI" firstAttribute="centerX" secondItem="ThX-Gf-RmO" secondAttribute="centerX" id="R5z-56-PFb"/>
-                            <constraint firstItem="jbY-mE-esM" firstAttribute="top" secondItem="gXS-E3-Ljq" secondAttribute="bottom" constant="45" id="TWQ-Kr-Bid"/>
+                            <constraint firstItem="jbY-mE-esM" firstAttribute="top" secondItem="gXS-E3-Ljq" secondAttribute="bottom" constant="30" id="T5B-sj-2Qe"/>
                             <constraint firstItem="Ol3-3n-Cai" firstAttribute="centerX" secondItem="ThX-Gf-RmO" secondAttribute="centerX" id="WKY-iT-ZJv"/>
                             <constraint firstItem="gXS-E3-Ljq" firstAttribute="centerX" secondItem="ThX-Gf-RmO" secondAttribute="centerX" id="aO5-If-c7S"/>
                             <constraint firstItem="hu7-vT-vDk" firstAttribute="trailing" secondItem="ian-hq-fp6" secondAttribute="trailing" id="abV-0p-mJe"/>
@@ -184,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o2d-EZ-aiO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-243" y="-171"/>
+            <point key="canvasLocation" x="-243.47826086956525" y="-171.42857142857142"/>
         </scene>
     </scenes>
     <resources>
