@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		685A66D95ABA841627E20D9F /* Pods_MahjangManagementApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B1AC1AED0B608419DDAF76E /* Pods_MahjangManagementApp.framework */; };
-		826AEA0D272C460A004AC006 /* UIAlert-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826AEA0C272C460A004AC006 /* UIAlert-Extension.swift */; };
+		825FA3342736C9B800AD338A /* UIAlert-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 825FA3332736C9B800AD338A /* UIAlert-Extension.swift */; };
 		8290921A2734CA34001CF202 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 829CDCED270211D600FB4931 /* Assets.xcassets */; };
 		8290921E27350AD9001CF202 /* ContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8290921D27350AD9001CF202 /* ContactViewController.swift */; };
 		8290922027350AEA001CF202 /* Contact.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8290921F27350AEA001CF202 /* Contact.storyboard */; };
@@ -41,7 +41,7 @@
 		0B1AC1AED0B608419DDAF76E /* Pods_MahjangManagementApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MahjangManagementApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1501886E4226900586AA1578 /* Pods-MahjangManagementApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjangManagementApp.debug.xcconfig"; path = "Target Support Files/Pods-MahjangManagementApp/Pods-MahjangManagementApp.debug.xcconfig"; sourceTree = "<group>"; };
 		7EBAEBAF291E8C3DB05671E9 /* Pods-MahjangManagementApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MahjangManagementApp.release.xcconfig"; path = "Target Support Files/Pods-MahjangManagementApp/Pods-MahjangManagementApp.release.xcconfig"; sourceTree = "<group>"; };
-		826AEA0C272C460A004AC006 /* UIAlert-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIAlert-Extension.swift"; path = "../../../../Documents/UIAlert-Extension.swift"; sourceTree = "<group>"; };
+		825FA3332736C9B800AD338A /* UIAlert-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlert-Extension.swift"; sourceTree = "<group>"; };
 		8290921D27350AD9001CF202 /* ContactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactViewController.swift; sourceTree = "<group>"; };
 		8290921F27350AEA001CF202 /* Contact.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Contact.storyboard; sourceTree = "<group>"; };
 		829CDCE1270211D500FB4931 /* MahjangManagementApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MahjangManagementApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,7 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				829CDCF827021D2500FB4931 /* UIColor-Extension.swift */,
-				826AEA0C272C460A004AC006 /* UIAlert-Extension.swift */,
+				825FA3332736C9B800AD338A /* UIAlert-Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -313,6 +313,7 @@
 				8290921E27350AD9001CF202 /* ContactViewController.swift in Sources */,
 				829CDD0527041EA000FB4931 /* LoginViewController.swift in Sources */,
 				829CDD012704120C00FB4931 /* HomeViewController.swift in Sources */,
+				825FA3342736C9B800AD338A /* UIAlert-Extension.swift in Sources */,
 				829CDD1F270AE2AD00FB4931 /* Rule.swift in Sources */,
 				829CDCE9270211D500FB4931 /* ViewController.swift in Sources */,
 				829CDCF927021D2500FB4931 /* UIColor-Extension.swift in Sources */,
@@ -320,7 +321,6 @@
 				82EFC870271701420054215B /* EditResultViewController.swift in Sources */,
 				829CDD1B2706E27A00FB4931 /* AddRuleViewController.swift in Sources */,
 				829CDD1527043B3200FB4931 /* HistoryViewController.swift in Sources */,
-				826AEA0D272C460A004AC006 /* UIAlert-Extension.swift in Sources */,
 				829CDCE7270211D500FB4931 /* SceneDelegate.swift in Sources */,
 				829CDD0D2704357200FB4931 /* User.swift in Sources */,
 				829CDD2327128B4A00FB4931 /* AnalyticsViewController.swift in Sources */,
