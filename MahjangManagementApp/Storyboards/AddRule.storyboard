@@ -119,7 +119,7 @@
                             </segmentedControl>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7af-JL-Sy1">
                                 <rect key="frame" x="95" y="542.33333333333337" width="200" height="40"/>
-                                <color key="backgroundColor" red="0.92941176469999998" green="0.55294117649999996" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="gyf-ub-nDG"/>
                                     <constraint firstAttribute="width" constant="200" id="r7N-uC-bss"/>
