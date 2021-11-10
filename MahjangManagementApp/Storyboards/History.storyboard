@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -61,7 +61,7 @@
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="履歴" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gt4-40-dUB">
-                                <rect key="frame" x="0.0" y="40" width="390" height="50"/>
+                                <rect key="frame" x="0.0" y="44" width="390" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="bEB-j8-Elb"/>
                                 </constraints>
@@ -70,11 +70,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="5ef-cY-lG8">
-                                <rect key="frame" x="0.0" y="90" width="390" height="660"/>
+                                <rect key="frame" x="0.0" y="94" width="390" height="656"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="75" id="8lr-g4-ExK">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="75"/>
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="390" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8lr-g4-ExK" id="Dy7-XJ-d9B">
                                             <rect key="frame" x="0.0" y="0.0" width="390" height="75"/>
@@ -174,13 +174,14 @@
                         <color key="backgroundColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="VDr-zP-mDc" firstAttribute="trailing" secondItem="gt4-40-dUB" secondAttribute="trailing" id="C9V-p5-9Vv"/>
-                            <constraint firstItem="JJr-Nz-aRp" firstAttribute="top" secondItem="5ef-cY-lG8" secondAttribute="bottom" id="GgP-42-ATN"/>
-                            <constraint firstItem="gt4-40-dUB" firstAttribute="top" secondItem="uKT-Wt-kOU" secondAttribute="top" constant="40" id="Hpy-bg-X0g"/>
+                            <constraint firstItem="gt4-40-dUB" firstAttribute="top" secondItem="VDr-zP-mDc" secondAttribute="top" id="Hpy-bg-X0g"/>
                             <constraint firstItem="VDr-zP-mDc" firstAttribute="trailing" secondItem="JJr-Nz-aRp" secondAttribute="trailing" id="MUx-2K-TWZ"/>
                             <constraint firstItem="VDr-zP-mDc" firstAttribute="bottom" secondItem="JJr-Nz-aRp" secondAttribute="bottom" id="bpA-s1-Ecx"/>
                             <constraint firstItem="5ef-cY-lG8" firstAttribute="leading" secondItem="VDr-zP-mDc" secondAttribute="leading" id="cJf-pc-zhb"/>
                             <constraint firstItem="JJr-Nz-aRp" firstAttribute="leading" secondItem="uKT-Wt-kOU" secondAttribute="leading" id="d5G-jl-zJl"/>
                             <constraint firstItem="5ef-cY-lG8" firstAttribute="top" secondItem="gt4-40-dUB" secondAttribute="bottom" id="j7L-i3-gnU"/>
+                            <constraint firstItem="JJr-Nz-aRp" firstAttribute="bottom" secondItem="VDr-zP-mDc" secondAttribute="bottom" id="kGT-jC-qo9"/>
+                            <constraint firstItem="JJr-Nz-aRp" firstAttribute="top" secondItem="5ef-cY-lG8" secondAttribute="bottom" id="mwl-ZI-WDJ"/>
                             <constraint firstItem="VDr-zP-mDc" firstAttribute="trailing" secondItem="5ef-cY-lG8" secondAttribute="trailing" id="pZ5-d1-3Gq"/>
                             <constraint firstItem="gt4-40-dUB" firstAttribute="leading" secondItem="uKT-Wt-kOU" secondAttribute="leading" id="yD2-ob-cFY"/>
                         </constraints>

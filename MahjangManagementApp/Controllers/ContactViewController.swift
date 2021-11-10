@@ -15,7 +15,6 @@ class ContactViewController: UIViewController {
     
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var commentTextView: UITextView!
-    @IBOutlet weak var sendMailSwitch: UISwitch!
     @IBOutlet weak var sendButton: UIButton!
     
     @IBAction func tappedSendButton(_ sender: Any) {
@@ -80,10 +79,9 @@ class ContactViewController: UIViewController {
             return
         }
         
-        let sendMailFlag = sendMailSwitch.isOn
         let date = Timestamp()
         
-        let docData = ["date": date, "uid": uid, "comment": comment, "sendMailFlag": sendMailFlag, "email": mailAdress] as [String : Any]
+        let docData = ["date": date, "uid": uid, "comment": comment, "email": mailAdress] as [String : Any]
         
         let resultRef = Firestore.firestore().collection("mahjang").document("comments").collection(uid)
         

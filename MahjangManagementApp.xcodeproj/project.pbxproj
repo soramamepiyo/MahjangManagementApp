@@ -133,12 +133,12 @@
 			isa = PBXGroup;
 			children = (
 				829CDCE8270211D500FB4931 /* ViewController.swift */,
-				829CDD002704120C00FB4931 /* HomeViewController.swift */,
 				829CDD0427041EA000FB4931 /* LoginViewController.swift */,
+				829CDD002704120C00FB4931 /* HomeViewController.swift */,
 				829CDD1427043B3200FB4931 /* HistoryViewController.swift */,
+				82EFC86F271701420054215B /* EditResultViewController.swift */,
 				829CDD1A2706E27A00FB4931 /* AddRuleViewController.swift */,
 				829CDD2227128B4A00FB4931 /* AnalyticsViewController.swift */,
-				82EFC86F271701420054215B /* EditResultViewController.swift */,
 				8290921D27350AD9001CF202 /* ContactViewController.swift */,
 			);
 			path = Controllers;
@@ -148,12 +148,12 @@
 			isa = PBXGroup;
 			children = (
 				829CDD092704347F00FB4931 /* SignUp.storyboard */,
-				829CDCFE27040B9C00FB4931 /* Home.storyboard */,
 				829CDD0227041DCA00FB4931 /* Login.storyboard */,
+				829CDCFE27040B9C00FB4931 /* Home.storyboard */,
 				829CDD1027043AF700FB4931 /* History.storyboard */,
+				82EFC86B2716E5EF0054215B /* EditResult.storyboard */,
 				829CDD182706E26500FB4931 /* AddRule.storyboard */,
 				829CDD2027128AFA00FB4931 /* Analytics.storyboard */,
-				82EFC86B2716E5EF0054215B /* EditResult.storyboard */,
 				8290921F27350AEA001CF202 /* Contact.storyboard */,
 			);
 			path = Storyboards;
