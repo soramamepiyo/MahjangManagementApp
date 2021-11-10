@@ -81,7 +81,7 @@ class ContactViewController: UIViewController {
         
         let date = Timestamp()
         
-        let docData = ["date": date, "uid": uid, "comment": comment, "email": mailAdress] as [String : Any]
+        let docData = ["date": date, "uid": uid, "comment": comment, "email": mailAdress, "DevideModel": printModelName()] as [String : Any]
         
         let resultRef = Firestore.firestore().collection("mahjang").document("comments").collection(uid)
         
@@ -107,6 +107,31 @@ class ContactViewController: UIViewController {
                 
             }
         }
+    }
+    
+    func printModelName() -> String {
+        return UIDevice.modelName
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if (self.commentTextView.isFirstResponder) {
+            self.commentTextView.resignFirstResponder()
+        }
+    }
+    
+}
+
+extension UIDevice {
+    
+    class var modelName: String {
+        var systemInfo = utsname()
+        uname(&systemInfo)
+        let mirror = Mirror(reflecting: systemInfo.machine)
+        let identifier = mirror.children.reduce("") { identifier, element in
+            guard let value = element.value as? Int8, value != 0 else { return identifier }
+            return identifier + String(UnicodeScalar(UInt8(value)))
+        }
+        return identifier
     }
     
 }
