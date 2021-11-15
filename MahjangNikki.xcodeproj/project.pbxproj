@@ -222,7 +222,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 829CDCDC270211D500FB4931 /* Build configuration list for PBXProject "MahjangManagementApp" */;
+			buildConfigurationList = 829CDCDC270211D500FB4931 /* Build configuration list for PBXProject "MahjangNikki" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -479,7 +479,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sorapiyobeans.MahjangManagementApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sorapiyobeans.MahjangNikki;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -500,7 +500,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sorapiyobeans.MahjangManagementApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sorapiyobeans.MahjangNikki;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -510,7 +510,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		829CDCDC270211D500FB4931 /* Build configuration list for PBXProject "MahjangManagementApp" */ = {
+		829CDCDC270211D500FB4931 /* Build configuration list for PBXProject "MahjangNikki" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				829CDCF3270211D600FB4931 /* Debug */,
