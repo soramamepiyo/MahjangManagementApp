@@ -44,12 +44,6 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         "2021年10月", "2021年11月", "2021年12月",
         "2022年1月", "2022年2月", "2022年3月", "2022年4月", "2022年5月", "2022年6月"]
         
-//    var termList = [
-//        "全期間",
-//        "2021年10月", "2021年11月", "2021年12月"]
-    
-    
-        
     var selectedTerm: String = ""
     
     var ruleData = [String]()
@@ -358,7 +352,8 @@ class AnalyticsViewController: UIViewController, UIPickerViewDelegate, UIPickerV
                 
                 let term = getRuleIdentifierString(date: result.date.dateValue())
                                                 
-                let targetTerm = String(year) + String(month)
+                let zeroPaddingMonth = String(format: "%02d", month)
+                let targetTerm = String(year) + String(zeroPaddingMonth)
                 
                 if term == targetTerm {
                     switch result.mode {
