@@ -35,6 +35,8 @@
 		829CDD2327128B4A00FB4931 /* AnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829CDD2227128B4A00FB4931 /* AnalyticsViewController.swift */; };
 		82EFC86C2716E5EF0054215B /* EditResult.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82EFC86B2716E5EF0054215B /* EditResult.storyboard */; };
 		82EFC870271701420054215B /* EditResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EFC86F271701420054215B /* EditResultViewController.swift */; };
+		82F5E2852784093A00F7BEAF /* RuleList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82F5E2842784093A00F7BEAF /* RuleList.storyboard */; };
+		82F5E28727840A8200F7BEAF /* RuleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82F5E28627840A8200F7BEAF /* RuleListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +72,8 @@
 		829CDD2227128B4A00FB4931 /* AnalyticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsViewController.swift; sourceTree = "<group>"; };
 		82EFC86B2716E5EF0054215B /* EditResult.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = EditResult.storyboard; sourceTree = "<group>"; };
 		82EFC86F271701420054215B /* EditResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditResultViewController.swift; sourceTree = "<group>"; };
+		82F5E2842784093A00F7BEAF /* RuleList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RuleList.storyboard; sourceTree = "<group>"; };
+		82F5E28627840A8200F7BEAF /* RuleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuleListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +142,7 @@
 				829CDD1427043B3200FB4931 /* HistoryViewController.swift */,
 				82EFC86F271701420054215B /* EditResultViewController.swift */,
 				829CDD1A2706E27A00FB4931 /* AddRuleViewController.swift */,
+				82F5E28627840A8200F7BEAF /* RuleListViewController.swift */,
 				829CDD2227128B4A00FB4931 /* AnalyticsViewController.swift */,
 				8290921D27350AD9001CF202 /* ContactViewController.swift */,
 			);
@@ -153,6 +158,7 @@
 				829CDD1027043AF700FB4931 /* History.storyboard */,
 				82EFC86B2716E5EF0054215B /* EditResult.storyboard */,
 				829CDD182706E26500FB4931 /* AddRule.storyboard */,
+				82F5E2842784093A00F7BEAF /* RuleList.storyboard */,
 				829CDD2027128AFA00FB4931 /* Analytics.storyboard */,
 				8290921F27350AEA001CF202 /* Contact.storyboard */,
 			);
@@ -247,6 +253,7 @@
 			files = (
 				829CDCFB2703F56000FB4931 /* GoogleService-Info.plist in Resources */,
 				8290922027350AEA001CF202 /* Contact.storyboard in Resources */,
+				82F5E2852784093A00F7BEAF /* RuleList.storyboard in Resources */,
 				829CDCFF27040B9C00FB4931 /* Home.storyboard in Resources */,
 				8290921A2734CA34001CF202 /* Assets.xcassets in Resources */,
 				829CDD0327041DCA00FB4931 /* Login.storyboard in Resources */,
@@ -319,6 +326,7 @@
 				829CDCF927021D2500FB4931 /* UIColor-Extension.swift in Sources */,
 				829CDCE5270211D500FB4931 /* AppDelegate.swift in Sources */,
 				82EFC870271701420054215B /* EditResultViewController.swift in Sources */,
+				82F5E28727840A8200F7BEAF /* RuleListViewController.swift in Sources */,
 				829CDD1B2706E27A00FB4931 /* AddRuleViewController.swift in Sources */,
 				829CDD1527043B3200FB4931 /* HistoryViewController.swift in Sources */,
 				829CDCE7270211D500FB4931 /* SceneDelegate.swift in Sources */,
@@ -479,6 +487,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sorapiyobeans.MahjangNikki;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -500,6 +509,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.sorapiyobeans.MahjangNikki;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

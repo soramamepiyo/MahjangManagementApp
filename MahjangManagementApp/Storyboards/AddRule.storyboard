@@ -27,13 +27,28 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVp-0g-Mrn">
+                                        <rect key="frame" x="335" y="10" width="45" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="IKE-ii-YJI"/>
+                                            <constraint firstAttribute="width" constant="45" id="ofG-gC-fM4"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="doc.plaintext" catalog="system"/>
+                                        <connections>
+                                            <action selector="tappedToRuleListButton:" destination="1A0-6V-hYq" eventType="touchUpInside" id="oRu-OE-XSS"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.090196078430000007" green="0.37647058820000001" blue="0.63137254899999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="bI3-EI-LAr" secondAttribute="trailing" id="6Lq-TI-Umu"/>
                                     <constraint firstItem="bI3-EI-LAr" firstAttribute="leading" secondItem="QQj-h6-BMt" secondAttribute="leading" id="JAY-Mq-nSk"/>
                                     <constraint firstItem="bI3-EI-LAr" firstAttribute="top" secondItem="QQj-h6-BMt" secondAttribute="top" id="Spg-XQ-ygw"/>
+                                    <constraint firstAttribute="trailing" secondItem="cVp-0g-Mrn" secondAttribute="trailing" constant="10" id="VYg-j0-0g4"/>
                                     <constraint firstAttribute="bottom" secondItem="bI3-EI-LAr" secondAttribute="bottom" id="fR8-fc-OfJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="cVp-0g-Mrn" secondAttribute="bottom" constant="10" id="qYJ-zT-b5H"/>
                                     <constraint firstAttribute="height" constant="50" id="tUb-yG-0qf"/>
                                 </constraints>
                             </view>
@@ -290,4 +305,7 @@
             <point key="canvasLocation" x="602" y="9"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="doc.plaintext" catalog="system" width="115" height="128"/>
+    </resources>
 </document>

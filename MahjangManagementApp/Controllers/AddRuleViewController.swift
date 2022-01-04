@@ -68,6 +68,11 @@ class AddRuleViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         presentToAnalyticsViewController()
     }
     
+    @IBAction func tappedToRuleListButton(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "RuleList", bundle: nil)
+        let ruleListViewController = storyboard.instantiateViewController(identifier: "RuleListViewController") as! RuleListViewController
+        self.present(ruleListViewController, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
