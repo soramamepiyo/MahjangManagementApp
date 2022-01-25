@@ -21,6 +21,8 @@ class RuleListViewController: UIViewController, UITableViewDelegate, UITableView
         
         let cell = ruleListTableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
+        cell.selectionStyle = UITableViewCell.SelectionStyle.none
+        
         let ruleNameLabel = cell.contentView.viewWithTag(1) as! UILabel
         let gentenLabel = cell.contentView.viewWithTag(2) as! UILabel
         let kaeshitenLabel = cell.contentView.viewWithTag(3) as! UILabel
