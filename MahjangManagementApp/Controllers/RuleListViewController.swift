@@ -127,14 +127,27 @@ class RuleListViewController: UIViewController, UITableViewDelegate, UITableView
             snapShots?.documents.forEach({ (snapShot) in
                 let dic = snapShot.data()
                 let result = Rule.init(dic: dic)
-                
                 let resultID: String = snapShot.documentID
-                  self.resultsID.append(resultID)
-                
-                self.results.insert(result, at: 0)
-                self.resultsID.insert(resultID, at: 0)
+                        
+                if result.mode == "4" {
+                    self.results.append(result)
+                    self.resultsID.append(resultID)
+                }
                 
             })
+            
+            snapShots?.documents.forEach({ (snapShot) in
+                let dic = snapShot.data()
+                let result = Rule.init(dic: dic)
+                let resultID: String = snapShot.documentID
+                        
+                if result.mode == "3" {
+                    self.results.append(result)
+                    self.resultsID.append(resultID)
+                }
+                
+            })
+            
             self.ruleListTableView.reloadData()
         }
     }
