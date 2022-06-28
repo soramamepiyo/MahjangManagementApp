@@ -62,17 +62,117 @@ class RuleListViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     
-    //まだ未実装（削除時に対応するResultsデータを削除する必要があるため）
-//    //スワイプしたセルを削除　※arrayNameは変数名に変更してください
-//    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-//        if editingStyle == UITableViewCell.EditingStyle.delete {
-//
-//            removeDataFromFirestore(index: indexPath.row)
-//
-//            results.remove(at: indexPath.row)
-//            tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
-//        }
-//    }
+    //スワイプしたセルを削除　※arrayNameは変数名に変更してください
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCell.EditingStyle.delete {
+            
+            let targetRuleName = results[indexPath.row].ruleName
+            let msg = targetRuleName + "を削除しますか？"
+            
+            let alert = UIAlertController(title: "ルールの削除", message: msg, preferredStyle: .alert)
+            let ok1 = UIAlertAction(title: "ルールだけ削除", style: .default) { (action) in
+                
+                self.removeDataFromFirestore(index: indexPath.row)
+
+                self.results.remove(at: indexPath.row)
+                self.resultsID.remove(at: indexPath.row)
+
+                tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
+                
+                self.changeRuleID(targetRuleID: self.resultsID[indexPath.row])
+                
+            }
+            
+            let ok2 = UIAlertAction(title: "対局履歴を含めて削除", style: .default) { (action) in
+                
+                self.deleteRuleID(targetRuleID: self.resultsID[indexPath.row])
+                
+                self.removeDataFromFirestore(index: indexPath.row)
+
+                self.results.remove(at: indexPath.row)
+                self.resultsID.remove(at: indexPath.row)
+
+                tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
+                                
+            }
+            
+            //ここから追加
+            let cancel = UIAlertAction(title: "キャンセル", style: .cancel) { (acrion) in
+            }
+            alert.addAction(cancel)
+            //ここまで追加
+            
+            alert.addAction(ok1)
+            alert.addAction(ok2)
+
+            present(alert, animated: true, completion: nil)
+
+            
+        }
+    }
+    
+    //ルールのIDを「削除されたルールに変える関数」
+    private func changeRuleID(targetRuleID: String){
+        
+        
+    }
+    
+    //targetRuleIDの対局データを全て削除する関数
+    private func deleteRuleID(targetRuleID: String){
+        
+//        print("ID:\(targetRuleID)のデータを削除します。")
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        db.collection("mahjang").document("results").collection(uid).getDocuments { [self] (snapShots, err) in
+            
+            if let err = err {
+                
+                self.present(.errorAlert(errorMsg: "Firestoreからのルールの取得に失敗しました。\(err)　エラーコード:DEV022") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
+            }
+            
+            snapShots?.documents.forEach({ (snapShot) in
+                let dic = snapShot.data()
+                let result = Result.init(dic: dic)
+                
+                let targetGameID: String = snapShot.documentID
+                
+                if result.ruleID == targetRuleID {
+                    removeDataFromFirestore(docID: targetGameID)
+                }
+                
+            })
+        }
+        
+    }
+    
+    private func removeDataFromFirestore(docID: String) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Firestore.firestore().collection("mahjang").document("results").collection(uid).document(docID).delete() { err in
+            if let err = err {
+                self.present(.errorAlert(errorMsg: "Firestoreからのデータの削除に失敗しました。\(err)　エラーコード:DEV023") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
+            }
+        }
+        
+    }
+    
     
     //画面遷移のための関数
     private func presentToEditResultViewController(resultID: String) {
@@ -88,7 +188,7 @@ class RuleListViewController: UIViewController, UITableViewDelegate, UITableView
     let db = Firestore.firestore()
     var results:[Rule] = []
     var resultsID:[String] = []
-    
+    var deleteTargetGameResultsID:[String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,10 +201,10 @@ class RuleListViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadData()
+        loadRuleData()
     }
     
-    private func loadData() {
+    private func loadRuleData() {
         
         results = []
         
@@ -156,9 +256,8 @@ class RuleListViewController: UIViewController, UITableViewDelegate, UITableView
         
 //        print("\(index)番目のデータを削除します。")
         guard let uid = Auth.auth().currentUser?.uid else { return }
-
         
-        Firestore.firestore().collection("mahjang").document("results").collection(uid).document(resultsID[index]).delete() { err in
+        Firestore.firestore().collection("mahjang").document("rules").collection(uid).document(resultsID[index]).delete() { err in
             if let err = err {
                 self.present(.errorAlert(errorMsg: "Firestoreからのデータの削除に失敗しました。\(err)　エラーコード:DEV023") { _ in
                     

@@ -90,7 +90,6 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
                 
         presentToEditResultViewController(resultID: resultsID[indexPath.row])
         
-        
     }
 
     
