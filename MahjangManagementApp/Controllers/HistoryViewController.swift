@@ -87,8 +87,22 @@ class HistoryViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-                
-        presentToEditResultViewController(resultID: resultsID[indexPath.row])
+        
+        let targetGameID = results[indexPath.row].ruleID
+        
+        //編集していいデータかの確認
+        if targetGameID == "XXXXXXXXXXXX" {
+            
+            //アラートのタイトル
+            let dialog = UIAlertController(title: "エラー", message: "この履歴はルールが削除されているため\n編集ができません", preferredStyle: .alert)
+            //ボタンのタイトル
+            dialog.addAction(UIAlertAction(title: "確認", style: .default, handler: nil))
+            //実際に表示させる
+            self.present(dialog, animated: true, completion: nil)
+            
+        } else {
+            presentToEditResultViewController(resultID: resultsID[indexPath.row])
+        }
         
     }
 

@@ -73,15 +73,15 @@ class RuleListViewController: UIViewController, UITableViewDelegate, UITableView
             let alert = UIAlertController(title: "ルールの削除", message: msg, preferredStyle: .alert)
             let ok1 = UIAlertAction(title: "ルールだけ削除", style: .default) { (action) in
                 
+                self.changeRuleID(targetRuleID: self.resultsID[indexPath.row])
+                
                 self.removeDataFromFirestore(index: indexPath.row)
 
                 self.results.remove(at: indexPath.row)
                 self.resultsID.remove(at: indexPath.row)
 
                 tableView.deleteRows(at: [indexPath as IndexPath], with: UITableView.RowAnimation.automatic)
-                
-                self.changeRuleID(targetRuleID: self.resultsID[indexPath.row])
-                
+                                
             }
             
             let ok2 = UIAlertAction(title: "対局履歴を含めて削除", style: .default) { (action) in
@@ -115,6 +115,62 @@ class RuleListViewController: UIViewController, UITableViewDelegate, UITableView
     //ルールのIDを「削除されたルールに変える関数」
     private func changeRuleID(targetRuleID: String){
         
+        print("ID:\(targetRuleID)のデータを削除します。")
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        db.collection("mahjang").document("results").collection(uid).getDocuments { [self] (snapShots, err) in
+            
+            if let err = err {
+                
+                self.present(.errorAlert(errorMsg: "Firestoreからのルールの取得に失敗しました。\(err)　エラーコード:DEV022") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
+            }
+            
+            snapShots?.documents.forEach({ (snapShot) in
+                let dic = snapShot.data()
+                let result = Result.init(dic: dic)
+                
+                let targetGameID: String = snapShot.documentID
+                
+                if result.ruleID == targetRuleID {
+                    updateResult(docID: targetGameID, res: result)
+                }
+                
+            })
+        }
+        
+    }
+    
+    //Firestoreの更新処理を行う関数
+    private func updateResult(docID: String, res: Result) {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let docData = ["date": res.date, "mode": res.mode, "rule": "削除されたルール", "ruleID": "XXXXXXXXXXXX", "ranking": res.ranking, "score": res.score, "point": res.point] as [String : Any]
+        
+        let resultRef = Firestore.firestore().collection("mahjang").document("results").collection(uid).document(docID)
+        
+        resultRef.updateData(docData) { (err) in
+            if let err = err {
+                
+                self.present(.errorAlert(errorMsg: "Firestoreからの情報の更新に失敗しました。\(err)　エラーコード:DEV042") { _ in
+                    
+                    HUD.hide { (_) in
+                        HUD.flash(.error, delay: 1)
+                    }
+                    
+                    return
+                })
+            }
+            
+        }
         
     }
     
